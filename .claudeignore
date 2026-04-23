@@ -1,0 +1,25 @@
+# Build artifacts
+*.aux
+*.log
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.nav
+*.snm
+*.toc
+*.vrb
+*.out
+*.bbl
+*.blg
+
+# Generated output
+docs/
+guide/workflow-guide.html
+
+# Large/irrelevant directories
+templates/tikz-snippets/
+explorations/ARCHIVE/
+
+# Quarto (not used in this project)
+Quarto/
+*.qmd
