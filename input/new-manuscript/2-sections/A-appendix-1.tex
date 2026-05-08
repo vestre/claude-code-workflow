@@ -1,0 +1,807 @@
+\section{Appendix}
+
+
+\subsection{Proof of\label{lem:bnh}}
+\begin{proof}
+    TBD. See proof from C. Notes for signatur epart:
+
+    The matrix \(\Gamma(\beta_0)\) has signature \((d_Z,d_Z)\), i.e. \(d_Z\) positive and \(d_Z\) negative eigenvalues.
+% \footnote{In particular, \(\Gamma(\beta_0)\) has \(d_Z\) identical pairs of eigenvalues taking the values \(-\beta_0 + \sqrt{\beta_0^2-1}\).}
+% \footnote{\textcolor{red}{Need reference or proof for this, or maybe factorization helps.}} 
+\(\Lambda(\beta_0)\) is congruent to \(\Gamma(\beta_0)\), hence has the same signature. Use exact expression for eigenvalues of Gamma beta0.\footnote{Observe that since   \(\Sigma\) is defined by
+% \begin{align*}
+    \(\Sigma_{\hat\delta} \equiv \Sigma_{ZZ}^{-1}\, \E[\tilde Z_i\tilde Z_i' W_i^2]\, \Sigma_{ZZ}^{-1},
+\Sigma_{\hat\gamma} \equiv \Sigma_{ZZ}^{-1}\, \E[\tilde Z_i\tilde Z_i' V_i^2]\, \Sigma_{ZZ}^{-1}\), and 
+\(\Sigma_{\hat\delta,\hat\gamma} \equiv \Sigma_{ZZ}^{-1}\, \E[\tilde Z_i\tilde Z_i' W_i V_i]\, \Sigma_{ZZ}^{-1}\),
+% \end{align*}
+we can write \(\Lambda(\beta_0)\) as
+\begin{align*}
+    \Lambda(\beta_0) = 
+    \E\left[\begin{bmatrix}
+        W_i^2   & W_iV_i \\
+        W_iV_i  & V_i^2 
+    \end{bmatrix} \otimes \tilde Z_i\tilde Z_i' \right]^{\frac{1}{2}}
+    \left[\begin{bmatrix}
+        0 & 1 \\ 
+        1 & -2\beta_0 
+    \end{bmatrix} \otimes \boldsymbol{\iota}_{d_Z}\right]
+    \E\left[\begin{bmatrix}
+        W_i^2   & W_iV_i \\
+        W_iV_i  & V_i^2 
+    \end{bmatrix} \otimes \tilde Z_i\tilde Z_i' \right]^{\frac{1}{2}}
+\end{align*}
+where \(\tilde Z_i \equiv \Sigma_{ZZ}^{-\frac{1}{2}}Z_i\) is the whitened instrument. The signature follows since \(\left[\begin{smallmatrix}
+        0 & 1 \\ 
+        1 & -2\beta_0 
+    \end{smallmatrix}\right]\) has \(d_Z\) identical pairs of eigenvalues taking the values \(-\beta_0 + \sqrt{\beta_0^2-1}\) and \(\Gamma(\beta_0\) and \(\Lambda(\beta_0)\) are congruent to this matrix.
+}
+\end{proof}
+
+
+\subsection{Proof of\Cref{lem:stat}}
+\begin{proof}
+    TBD. Trivial
+\end{proof}
+
+% \subsection{Proof of\label{lem:eig}}
+% \begin{proof}
+    
+% \end{proof}
+
+\subsection{Proof of\Cref{prop:tlr}}
+\begin{proof}
+    TBD. See slides.
+\end{proof}
+
+\subsection{Proof of\Cref{prop:si}}
+\begin{proof}
+    TBD. Wilks.
+\end{proof}
+
+
+\subsection{Proof of\Cref{prop:wi}}
+\begin{proof}
+    TBD. See: \textcolor{red}{Written before the redefinition of \(\xi\) (used to be \(\xi_+\) only). }
+
+    we can write the secular equation along the weak instruments limiting sequence as:
+\begin{align*}
+    \frac{ \kappa_+^* }{(1+\lambda^*\kappa^*_+)^2}\sum_{\kappa_j>0}W_{j}^2 
+    -\frac{ \lvert\kappa_-^*\rvert }{(1-\lambda^*\lvert\kappa_-^*\rvert)^2}\sum_{\kappa_j<0}W_{j}^2  = 0
+\end{align*}
+Observe now that
+\begin{align}
+    Q_+ \equiv \sum_{\kappa_j>0}W_j^2 \sim \mathfrak{C}^2_{d_Z}(\xi_+)
+    \qquad \text{and}
+    \qquad 
+    Q_- \equiv \sum_{\kappa_j<0}W_j^2 \sim \mathfrak{C}^2_{d_Z}(\xi_-)
+\end{align}
+where \(Q_+,Q_-\) are independent, and under the null we have along the asymptotic sequence, where \(\sqrt{n}w_n=w\), that:
+\begin{align*}
+    \sum_{j=1}^{2d_Z}\kappa_jw_j^2 = 0
+    \iff
+        \lvert\kappa_-\rvert\sum_{\kappa_j<0}w_j^2 = \kappa_+\sum_{\kappa_j>0}w_j^2
+\end{align*}
+and by the properties of non-central chi-squared distributions, this implies \(\varrho^*\xi_- = \xi_+ \equiv \xi\).
+The secular equation thus simplifies as:
+\begin{align*}
+    \frac{ Q_+ }{(1+\lambda^*\kappa^*_+)^2}
+     = \frac{ \varrho^* Q_- }{(1-\lambda^*\lvert\kappa_-^*\rvert)^2} 
+\end{align*}
+Taking the root and solving for \(\lambda^*\kappa_+^*\), we obtain:
+\begin{align*}
+\lambda^*\kappa_+^* = 
+    \frac{ \sqrt{Q_+}-\sqrt{\varrho^*Q_-}}{\varrho^*\sqrt{Q_+} + \sqrt{\varrho^*Q_-}}
+    \label{eq:secular-simplific}
+\end{align*}
+Under \Cref{conj:binary-treat-limit} the LR statistic obtains:
+\begin{align*}
+    LR(\beta_0) \convd 
+     \left(\frac{\lambda^*  \kappa^*_+}{1+\lambda^* \kappa^*_+}\right)^2Q_++\left(\frac{\lambda^*  \kappa^*_-}{1+\lambda^* \kappa^*_-}\right)^2Q_- 
+\end{align*}
+Inserting for \cref{eq:secular-simplific} in this limit, we obtain:
+\begin{align*}
+    LR(\beta_0) \convd 
+     \left(\frac{\sqrt{Q_+}-\sqrt{\varrho^* Q_-}}{\left(1+\varrho^*\right) \sqrt{Q_+}}\right)^2 Q_+
+     +\left(\frac{\varrho^*\left(\sqrt{Q_+}-\sqrt{\varrho^* Q_-}\right)}{\left(1+\varrho^*\right) \sqrt{\varrho^* Q_-}}\right)^2 Q_-
+\end{align*}
+This simplifies to:
+\begin{align}
+    LR(\beta_0) \convd 
+    \frac{\left(\sqrt{Q_+}-\sqrt{\varrho^* Q_-}\right)^2}{1+\varrho^*}
+\end{align}
+where \(Q_+ \sim \mathfrak{C}^2_{d_Z}(\xi)\) and \(Q_- \sim \mathfrak{C}^2_{d_Z}(\xi/\varrho^*)\).
+\end{proof}
+
+\subsection{Proof of\Cref{prop:lim}}
+\begin{proof}
+    TBD. See pdf note for (a)--(d).
+\end{proof}
+
+\subsection{Proof of\Cref{prop:tlr-lfc}}
+\begin{proof}
+    TBD. Trivial
+\end{proof}
+
+\subsection{Proof of\Cref{prop:tlr-bb}}
+\begin{proof}
+    TBD. Semi-trivial.
+\end{proof}
+
+% \subsection{Proof of \Cref{prop:asy-tsls}}
+% \label{appx:proof-asy-tsls}
+% \begin{proof}
+%     We first derive the limiting distribution under generalized non-homoskedasticity. We then specialize to the setting of binary treatment.
+
+%     \paragraph*{Step I: General case.}
+%     Let \(\beta\) denote the TSLS estimand, and 
+%     define the residual \(U_i\) as
+%     \begin{align}
+%          U_i \equiv \tilde Y_i - \beta \tilde D_i 
+%          \label{eq:residual}
+%     \end{align}
+%     such that we can write:
+%     \begin{align*}
+%         \hat B_{\mathrm{TSLS}}- \beta = \frac{\sum_{i=1}^n \sum_{j=1}^n P_{ij}\,  U_i \tilde D_j}{\sum_{i=1}^n \sum_{j=1}^n P_{ij}\, \tilde D_i\tilde D_j}.
+%     \end{align*}
+%     Rewriting the quadratic form in terms of sums, we obtain:
+% \begin{align}
+%        \hat B_{\mathrm{TSLS}}  - \beta =
+%        \frac{\left(\sum_{i=1}^n \tilde D_i \tilde Z_i\right)^{\prime}\left(\sum_{i=1}^n \tilde Z_i \tilde Z_i^{\prime}\right)^{-1}\left(\sum_{i=1}^n U_i \tilde Z_i\right)}{\left(\sum_{i=1}^n \tilde D_i \tilde Z_i\right)^{\prime}\left(\sum_{i=1}^n \tilde Z_i \tilde Z_i^{\prime}\right)^{-1}\left(\sum_{i=1}^n \tilde D_i \tilde Z_i\right)}
+% \end{align}
+% Inserting for \(\tilde D_i\) from \cref{eq:first-stage-equation},
+% we obtain:
+% \begin{align*}
+%     \frac{1}{\sqrt{n}} \sum_{i=1}^n \tilde D_i \tilde Z_i=
+%      \left(\frac{1}{\sqrt{n}} \sum_{i=1}^n  \tilde Z_i  \tilde Z_i'\right)\gamma_n + \frac{1}{\sqrt{n}} \sum_{i=1}^n V_i\tilde Z_i
+% \end{align*}
+% By WLLN we have \(\frac{1}{n}\sum_{i=1}^n \tilde Z_i U_i \convp \E[\tilde Z_iU_i] \), \(\frac{1}{n}\sum_{i=1}^n \tilde Z_i V_i \convp \E[\tilde Z_iV_i] \) and \(\left(\frac{1}{\sqrt n}\sum_{i=1}^n \tilde Z_i\tilde Z_i'\right)\gamma_n =\left(\frac{1}{n}\sum_{i=1}^n \tilde Z_i\tilde Z_i' \right)\bar\gamma \convp\E[\tilde Z_i\tilde Z_i']\bar\gamma\).
+% By CLT we obtain:
+% \begin{align*}
+%        \frac{1}{\sqrt{n}} \sum_{i=1}^n
+%        \begin{bmatrix}
+%        \var\left[\tilde Z_i U_i\right]^{-\frac{1}{2}} \tilde Z_i U_i \\
+%        \var\left[\tilde Z_i V_i\right]^{-\frac{1}{2}} \tilde Z_i V_i
+%        \end{bmatrix}
+%        \quad\convd\quad
+%        \left[\begin{array}{l}Q \\ R\end{array}\right]
+% \end{align*}
+% where \(Q,R \sim \mathfrak{N}(0_{d_Z},\boldsymbol{\iota}_{d_Z})\), \(\boldsymbol{\iota}_{d_Z}\) is the identity matrix of dimension \(d_Z \times d_Z\) and 
+% \begin{align*}
+%   \cov[Q,R] &=  \var[\tilde Z_iU_i]^{-\frac{1}{2}}\E[\tilde Z_i\tilde Z_i'U_iV_i] \var[\tilde Z_iV_i]^{-\frac{1}{2}}  
+%   \equiv \boldsymbol{\rho}_{d_Z}
+% \end{align*}
+% By CMT, since \(R\) continuous, and thus the denominator a.s. non-zero, that:
+% \begin{align*}
+%        \hat B_{\mathrm{TSLS}}  - \beta
+%        \convd
+%    \frac{\left(\E[\tilde Z_i\tilde Z_i']\bar\gamma  + \var[\tilde Z_iV_i]^{\frac{1}{2}}R \right)^{\prime}\E\left[\tilde Z_i \tilde Z_i^{\prime}\right]^{-1}\var[\tilde Z_iU_i]^{\frac{1}{2}}Q}
+%        {\left( \E[\tilde Z_i\tilde Z_i']\bar\gamma  + \var[\tilde Z_iV_i]^{\frac{1}{2}}R \right)^{\prime}\E\left[\tilde Z_i \tilde Z_i^{\prime}\right]^{-1}\left(\E[\tilde Z_i\tilde Z_i']\bar\gamma  + \var[\tilde Z_iV_i]^{\frac{1}{2}}R \right)}
+% \end{align*}
+% We factor out, and rewrite in terms of \(\mu\):
+% \begin{align*}
+%        \hat B_{\mathrm{TSLS}}  - \beta
+%        \convd
+%    \frac{ \var[\tilde Z_iV_i]^{\frac{1}{2}}\left(\mu +R \right)^{\prime}\E\left[\tilde Z_i \tilde Z_i^{\prime}\right]^{-1}\var[\tilde Z_iU_i]^{\frac{1}{2}}Q}
+%        { \var[\tilde Z_iV_i]^{\frac{1}{2}}\left( \mu  +R \right)^{\prime}\E\left[\tilde Z_i \tilde Z_i^{\prime}\right]^{-1}\var[\tilde Z_iV_i]^{\frac{1}{2}}\left(\mu + R \right)}
+% \end{align*}
+% Using that \(\var[\tilde Z_iV_i]^{\prime}=\var[\tilde Z_iV_i]\), we can rewrite the expression as:
+% \begin{align*}
+%     &\hat B_{\mathrm{TSLS}}  - \beta
+%        \convd
+%    \frac{ \left(\mu +R \right)^{\prime}\var[\tilde Z_iV_i]^{\frac{1}{2}}\E\left[\tilde Z_i \tilde Z_i^{\prime}\right]^{-1}\var[\tilde Z_iV_i]^{\frac{1}{2}}\var[\tilde Z_iV_i]^{-\frac{1}{2}}\var[\tilde Z_iU_i]^{\frac{1}{2}}Q}
+%        { \left( \mu  +R \right)^{\prime}\var[\tilde Z_iV_i]^{\frac{1}{2}}\E\left[\tilde Z_i \tilde Z_i^{\prime}\right]^{-1}\var[\tilde Z_iV_i]^{\frac{1}{2}}\left(\mu + R \right)}
+% \end{align*}
+% Define
+% \(
+%     {\boldsymbol{\nu}}_{d_Z} \equiv \var[\tilde Z_iV_i]^{\frac{1}{2}}\E[\tilde Z_i \tilde Z_i^{\prime}]^{-1}\var[\tilde Z_iV_i]^{\frac{1}{2}}
+% \),
+% and let \(\tilde{{\boldsymbol{\nu}}}_{d_Z} \equiv d_Z\operatorname{tr}[\boldsymbol{\nu}_{d_Z}]^{-1}\boldsymbol{\nu}_{d_Z}\).
+% The matrix \(\tilde{\boldsymbol{\nu}}_{d_Z}\) is symmetric positive definite. 
+% We have:
+% \begin{align*}
+%     &\hat B_{\mathrm{TSLS}}  - \beta
+%        \convd
+%    \frac{ \left(\mu +R \right)^{\prime}\tilde{\boldsymbol{\nu}}_{d_Z}\,\var[\tilde Z_iV_i]^{-\frac{1}{2}}\var[\tilde Z_iU_i]^{\frac{1}{2}}Q}
+%        { \left( \mu  +R \right)^{\prime}\tilde{\boldsymbol{\nu}}_{d_Z}\left(\mu + R \right)}
+% \end{align*}
+% Observe that we can decompose
+%     \(Q = \boldsymbol{\rho}_{d_Z}R + (\boldsymbol{\iota}_{d_Z} - \boldsymbol{\rho}_{d_Z}\boldsymbol{\rho}_{d_Z}')^{\frac{1}{2}} P\),
+% where \(P \sim \mathfrak{N}(0_{d_Z},\boldsymbol{\iota}_{d_Z})\), \(R \indep P\) and rewrite:
+% \begin{align*}
+%     &\hat B_{\mathrm{TSLS}}  - \beta
+%        \convd
+%    \frac{ \left(\mu +R \right)^{\prime}\tilde{\boldsymbol{\nu}}_{d_Z}\,\var[\tilde Z_iV_i]^{-\frac{1}{2}}\var[\tilde Z_iU_i]^{\frac{1}{2}}(\boldsymbol{\rho}_{d_Z}R + (\boldsymbol{\iota}_{d_Z} - \boldsymbol{\rho}_{d_Z}\boldsymbol{\rho}_{d_Z}')^{\frac{1}{2}} P)}
+%        { \left( \mu  +R \right)^{\prime}\tilde{\boldsymbol{\nu}}_{d_Z}\left(\mu + R \right)}
+% \end{align*}
+% Let now \(\boldsymbol{\omega}_{d_Z} \equiv  \ \var[\tilde Z_iV_i]^{-\frac{1}{2}} \var[\tilde Z_iU_i]^{\frac{1}{2}} \boldsymbol{\rho}_{d_Z}\), i.e. \(\boldsymbol{\omega}_{d_Z}=\var[\tilde Z_iV_i]^{-\frac{1}{2}}\E[\tilde Z_i\tilde Z_i'U_iV_i] \var[\tilde Z_iV_i]^{-\frac{1}{2}}\), 
+% \(\omega\equiv d_Z^{-1}\operatorname{tr}[\boldsymbol{\omega}_{d_Z}]\) and  \(\tilde{\boldsymbol{\omega}}_{d_Z} \equiv \omega^{-1}{\boldsymbol{\omega}}_{d_Z} \). 
+% Let further
+% \[\boldsymbol{h}_{d_Z} \equiv [\var[\tilde Z_iV_i]^{-\frac{1}{2}}\left(\var[\tilde Z_iU_i] - \E[\tilde Z_i\tilde Z_i'U_iV_i]\,\var[\tilde Z_iV_i]^{-1}\,\E[\tilde Z_i\tilde Z_i'U_iV_i]\right)\var[\tilde Z_iV_i]^{-\frac{1}{2}}]^{\frac{1}{2}}\]
+% and equivalently
+% \(h \equiv d_Z^{-\frac{1}{2}}\operatorname{tr}[{\boldsymbol{h}}_{d_Z}{\boldsymbol{h}}_{d_Z}']^{\frac{1}{2}}\) and \(\tilde{\boldsymbol{h}}_{d_Z}\equiv h^{-1}{\boldsymbol{h}}_{d_Z}\).
+% Rewriting the limit in terms of these composite terms, we obtain:
+% \begin{align}
+% \begin{aligned}
+%    &\hat B_{\mathrm{TSLS}}  - \beta
+%        \convd
+%        \omega \cdot
+%    \frac{ \left(\mu +R \right)^{\prime}\tilde{\boldsymbol{\nu}}_{d_Z}\,\tilde {\boldsymbol{ \omega}}_{d_Z}R }
+%        { \left( \mu  +R \right)^{\prime}\tilde{\boldsymbol{\nu}}_{d_Z}\left(\mu + R \right)} +
+%      h \cdot\frac{ \left(\mu +R \right)^{\prime}\tilde{\boldsymbol{\nu}}_{d_Z}\,\tilde{\boldsymbol{h}}_{d_Z} P}
+%        { \left( \mu  +R \right)^{\prime}\tilde{\boldsymbol{\nu}}_{d_Z}\left(\mu + R \right)}
+%        \label{eq:general-dz-result}
+% \end{aligned}
+% \end{align}
+% \paragraph*{Step II: Binary Treatment, simplifications.}
+% Observe that along the asymptotic sequence we have:
+% \begin{align}
+%     {\boldsymbol{\nu}}_{d_Z} 
+%     \xrightarrow{n\to\infty} \frac{\overbrace{\var[\tilde Z_i\tilde Z_i]^{\frac{1}{2}}\E\left[\tilde Z_i \tilde Z_i^{\prime}\right]^{-1}\var[\tilde Z_i\tilde Z_i]^{\frac{1}{2}}}^{=\boldsymbol{\iota}_{d_Z}}}{p^*(1-p^*)} = \frac{\boldsymbol{\iota_{d_Z}}}{p^*(1-p^*)} 
+% \end{align}
+% and as such \(\tilde{\boldsymbol{ \nu}}_{d_Z}\to\boldsymbol{\iota}_{d_Z}\). It follows that:
+% \begin{align}
+% \begin{aligned}
+%    &\hat B_{\mathrm{TSLS}}  - \beta
+%        \convd
+%        \omega \cdot
+%    \frac{ \left(\mu +R \right)^{\prime}\tilde {\boldsymbol{ \omega}}_{d_Z}R }
+%        { \lVert \mu+R \rVert^2} +
+%     h\cdot \frac{ \left(\mu +R \right)^{\prime}\,\tilde{\boldsymbol{h}}_{d_Z} P}
+%        { \lVert \mu+R \rVert^2}
+%        \label{eq:general-dz-result-binary}
+% \end{aligned}
+% \end{align}
+% We now proceed to derive more intuitive expressions for \(\omega\) and \(h\).
+% Inserting for \(\tilde D_i\) from \cref{eq:first-stage-equation} and \(\tilde Y_i\) from \cref{eq:reduced-form-equation} into
+% the equation for \(U_i\) from \cref{eq:residual}, and solving for \(W_i\), we obtain:
+% \begin{align*}
+%     W_i =   \beta V_i + (\beta\gamma_n'-\delta_n )\tilde Z_i  + U_i
+% \end{align*}
+% where we observe that we can write the difference \(\beta\gamma_n'-\delta_n \) as:
+% \[
+% \beta\gamma_n'-\delta_n 
+%     = (\beta_j - \beta)\Delta_n(j)
+%     \]
+% % \end{align*}
+% By writing out \(\beta\) in terms of its TSLS weights we obtain:
+% \begin{align*}
+%     \beta\gamma_n'-\delta_n  = \Delta_n(j)\sum_{k=1}^{d_Z}\beta_k\underbrace{\left(\1[k=1]-\,\Delta_n(k)\frac{\;\cov[p_n(J_i),\1[J_i\geq k]]}{\var[p_n(J_i)]}    \right)}_{\equiv \eta(j)}
+% \end{align*}
+% In other words, this difference captures the difference between TSLS weights and a uniformly weighted estimand. Observe that the difference, \(\eta(j)\), is constant in \(n\) along the sequence, since \(n\) factors out from the numerator and denominator:
+% \begin{align*}
+%     \eta(j) = \1[k=1]-\,\frac{(p(j)-p(j-1))\cov[p(J_i),\1[J_i\geq k]]}{\var[p(J_i)]}
+% \end{align*}
+% Since  \(\Delta_n(j) \to 0\) as \(n\to\infty\), the difference vanishes at rate \(n^{-\frac{1}{2}}\), and along the sequence we have \(W_i =  \beta V_i + U_i\).
+% Consider now the regression of every element of \(\tilde Z_iW_i\) on every element of \((\tilde Z_iV_i)'\), and let the matrix of coefficients from these regressions be denoted:
+% \begin{align*}
+%     \boldsymbol{\beta}_{zols} \equiv \var[\tilde Z_iV_i]^{-1}\E[\tilde Z_i\tilde Z_i'W_iV_i]
+% \end{align*}
+% Observe that we can rewrite the components of \(\boldsymbol{h}_{d_Z}\) as follows:
+% \begin{align}
+%     \E[\tilde Z_i\tilde Z_i'U_iV_i]
+%     &= \E[\tilde Z_i\tilde Z_i'W_iV_i]
+%     - \beta\var[\tilde Z_iV_i]
+%     = 
+%     \var[\tilde Z_iV_i](\boldsymbol{\beta}_{zols}- \beta\boldsymbol{\iota}_{d_Z}) 
+%     \label{eq:first-helper}\\ 
+%     \var[\tilde Z_iU_i] 
+%     &= 
+%     \var[\tilde Z_iW_i] - 2\beta \var[\tilde Z_iV_i]\boldsymbol{\beta}_{zols} + \beta^2\var[\tilde Z_iV_i]
+%     \label{eq:second-helper}
+% \end{align}
+% This admits the following reformulation of 
+% \(\boldsymbol{h}_{d_Z}\):
+% \begin{align}
+%     \boldsymbol{h}_{d_Z}=\left[\var[\tilde Z_iV_i]^{-\frac{1}{2}}\Big(\var[\tilde Z_iW_i] - \var[\tilde Z_iV_i]\,\boldsymbol{\beta}_{zols}^2\Big)\var[\tilde Z_iV_i]^{-\frac{1}{2}}\right]^{\frac{1}{2}}
+% \end{align}
+% Observing that \(\var[\tilde Z_iV_i]\to \E[Z_iZ_i']\,p^*(1-p^*)\)  as \(n\to\infty\), 
+% we obtain:
+% \begin{align}
+%     {\boldsymbol{h}}_{d_Z}\equiv \E[\tilde Z_i\tilde Z_i']^{\frac{1}{2}}\left[\frac{\E[\tilde Z_i\tilde Z_i']^{-1}\var[\tilde Z_iW_i]- \boldsymbol{\beta}_{zols}^2p^*(1-p^*)}{p^*(1-p^*)} \, \right]^{\frac{1}{2}}\E[\tilde Z_i\tilde Z_i']^{-\frac{1}{2}}
+% \end{align}
+% This is a matrix on the form \(B=PAP^{-1}\). The center matrix is similar to the full matrix, and thus we have:
+% \begin{align*}
+%     \left[\frac{1}{d_Z}\left[\frac{\tr\left[\E[\tilde Z_i\tilde Z_i']^{-1}\var[\tilde Z_iW_i]\right]}{p^*(1-p^*)} - \tr\left[\boldsymbol{\beta}_{zols}^2\right]\right]\right]^{\frac{1}{2}}
+% \end{align*}
+% Inserting for \cref{eq:first-helper} in the expression for \(\boldsymbol{\omega}_{d_Z}\) gives the representation:
+% \begin{align}
+%     \boldsymbol{\omega}_{d_Z} =
+%     \var[\tilde Z_iV_i]^{-\frac{1}{2}}
+%     (\boldsymbol{\beta}_{zols}-\beta\boldsymbol{\iota}_{d_Z})
+%     \var[\tilde Z_iV_i]^{\frac{1}{2}}
+% \end{align}
+% which under  \(\var[\tilde Z_iV_i]\to \E[Z_iZ_i']\,p^*(1-p^*)\) as \(n\to\infty\) becomes
+% \begin{align*}
+%     \boldsymbol{\omega}_{d_Z} 
+%     = 
+%     \E[\tilde Z_i\tilde Z_i']^{-\frac{1}{2}}
+%     (\boldsymbol{\beta}_{zols}-\beta\boldsymbol{\iota}_{d_Z})
+%     \E[\tilde Z_i\tilde Z_i']^{\frac{1}{2}}
+% \end{align*}
+% this is a similar transformation of the matrix \(\boldsymbol{\beta}_{zols}-\beta\boldsymbol{\iota}_{d_Z}\), and thus
+% \begin{align*}
+%     \omega \equiv d_Z^{-1}\operatorname{tr}[\boldsymbol{\omega}_{d_Z} ] = d_Z^{-1}\operatorname{tr}[\boldsymbol{\beta}_{zols}-\beta\boldsymbol{\iota}_{d_Z}] 
+%     % = d_Z^{-1}\sum_{j=1}^{d_Z}(\beta_{zols}(j)-\beta) 
+% \end{align*}
+% Note that \(\omega\) is chosen to capture the first-order impact of \(\boldsymbol{\omega}_{d_Z}\) on the first moment of \((\mu+R)'R\), and \(h\) is chosen to capture the first-order impact of \(\boldsymbol{h}_{d_Z}\) on the second moment of \((\mu+R)'P\).
+
+% \paragraph*{Step III: Binary Treatment, \(\tilde{\boldsymbol{\omega}}_{d_Z}\to \boldsymbol{\iota}_{d_Z}\).}
+% In the following, we 
+% show that \(\lim_{n\to\infty}\tilde{\boldsymbol{\omega}}_{d_Z} = {\boldsymbol{\iota}}_{d_Z}\) along the sequence.
+% Observe that we can write:
+% \begin{align*}
+%     \tilde{\boldsymbol{\omega}}_{d_Z} = \boldsymbol{\iota}_{d_Z} + (\tilde{\boldsymbol{\omega}}_{d_Z}-\boldsymbol{\iota}_{d_Z})
+% \end{align*}
+% Let \(\pi_j\equiv \P[J_i=j]\). Define further
+%  \begin{align*}
+%      \bar \omega &\equiv \sum_{j=0}^{d_Z} \pi_j \E[U_iV_i \mid J_i = j] \qquad \text{and} \qquad
+%         \varepsilon(j) \equiv \E[U_iV_i \mid J_i = j] - \bar \omega
+%  \end{align*}
+%  Along the sequence, we have \(\var[\tilde Z_iV_i]=\E[Z_iZ_i']p^*(1-p^*)\).
+%  We can thus write:
+%  \begin{align}
+%      {\boldsymbol{\omega}}_{d_Z} = 
+%      \frac{\bar \omega\boldsymbol{\iota}_{d_Z}}{p^*(1-p^*)} + \frac{\E[Z_iZ_i']^{-\frac{1}{2}}\E[Z_iZ_i'\varepsilon(J_i)]\E[Z_iZ_i']^{-\frac{1}{2} }}{p^*(1-p^*)}
+%  \end{align}
+%  Dividing by the normalized trace absorbs the constant in front of \(\boldsymbol{\iota}_{d_Z}\). Rearranging, we get:
+%  \begin{align}
+%      \tilde{\boldsymbol{\omega}}_{d_Z} - \boldsymbol{\iota}_{d_Z} = 
+%        \frac{\E[Z_iZ_i']^{-\frac{1}{2}}\E[Z_iZ_i'\varepsilon(J_i)]\E[Z_iZ_i']^{-\frac{1}{2} }}{\omega \,p^*(1-p^*)}
+%  \end{align}
+%  Observe that
+%  \begin{align}
+%      \E[U_iV_i\mid J_i=j] = \cov[W_iV_i\mid J_i=j] - \beta \var[V_i\mid J_i=j]
+%  \end{align}
+%  We know that \(\var[V_i\mid J_i=j]\) converges along the sequence and \(\beta\) is constant. We thus focus on the first term. Observe that,  conditional on \(J_i=j\), we can write:
+%  \begin{align}
+%     V_i &= D_i(j) - p_n(j), \\
+%     W_i &= Y_i(0) + \beta_i D_i(j) - \E[Y_i(0) + \beta_i D_i(j)]
+% \end{align}
+% Therefore, by \Cref{ass:iv}\ref{ass:assump-1b} (random assignment), we have:
+% \begin{align}
+%     \cov[W_i, V_i \mid J_i = j] = {\cov[Y_i(0), D_i(j)]} + {\E[\beta_i D_i(j)](1-p_n(j))}
+%     \label{eq:random-ass}
+% \end{align}
+% By \cref{ass:iv}\ref{ass:assump-1d} (monotonicity), for any two strata \(j>j'\), \(D_i(j)-D_i(j') \in\{0,1\}\) is binary. It follows that:
+% \begin{align}
+% &\lvert\cov[Y_i(0), D_i(j)] - \cov[Y_i(0), D_i(j')]\rvert
+% = \lvert\cov[Y_i(0), D_i(j)-D_i(j')]\rvert \\ 
+% % &\qquad= \lvert\E[Y_i(0) \mid D_i(j)>D_i(j'))]-\E[Y_i(0)]\rvert \cdot \P[D_i(j)>D_i(j'))] \\ 
+% &\qquad= \lvert\E[Y_i(0) \mid D_i(j)>D_i(j'))]-\E[Y_i(0)]\rvert \cdot (p_n(j)-p_n(j')) \
+%         = O(1/\sqrt{n})
+%     \label{eq:convergence-1}
+% \end{align}
+% and since \(D_i\) is binary, we have:
+% \begin{align}
+%     \E[\beta_i D_i(j)] - \E[\beta_i D_i(j')]
+%         = \E[\beta_i \mid D_i(j) > D_i(j')] \cdot (p_n(j) - p_n(j'))
+%         = O(1/\sqrt{n}).
+%         \label{eq:convergence-2}
+% \end{align}
+% It follows that \(\varepsilon(j)=O(1/\sqrt{n})\)  uniformly across \(j\). Thus:
+% \begin{align*}
+%     \lVert\tilde{\boldsymbol{\omega}}_{d_Z}-\boldsymbol{\iota}_{d_Z}\rVert_{\text{op}} \leq  
+%        \frac{\lVert\E[Z_iZ_i']^{-\frac{1}{2}}\rVert^2_{\text{op}}\cdot\lVert\E[Z_iZ_i']\rVert^2_{\text{op}}}{\lvert\omega\rvert \cdot \,p^*(1-p^*)} \cdot \max_{j} \lvert \varepsilon(j)\rvert = O(1/\sqrt{n}) \to 0
+% \end{align*}
+% \paragraph*{Step IV: Binary Treatment, \(\tilde{\boldsymbol{h}}_{d_Z}\tilde{\boldsymbol{h}}_{d_Z}'\to \boldsymbol{\iota}_{d_Z}\).}
+% Recall that we have
+% \begin{align}\label{eq:hh-outer}
+%     \boldsymbol{h}_{d_Z}\boldsymbol{h}_{d_Z}' = \frac{\E[Z_iZ_i']^{-\frac{1}{2}}\var[\tilde Z_iW_i]\,\E[Z_iZ_i']^{-\frac{1}{2}}}{p^*(1-p^*)} - \E[Z_iZ_i']^{\frac{1}{2}}\boldsymbol{\beta}_{zols}^2\,\E[Z_iZ_i']^{-\frac{1}{2}},
+% \end{align}
+% Define now
+% \begin{align*}
+%     \bar\sigma_W^2 &\equiv \sum_j \pi_j\,\E[W_i^2 \mid J_i=j] 
+%     \qquad \text{and} \qquad
+%     \xi(j) \equiv \E[W_i^2 \mid J_i=j] - \bar\sigma_W^2, 
+% \end{align*}
+% and
+% \begin{align}
+% \bar \sigma_{WV} \equiv \sum_j \pi_j\,\E[W_iV_i \mid J_i=j]
+% \qquad \text{and} \qquad
+%     \zeta(j) &\equiv \E[W_iV_i \mid J_i=j] - \bar \sigma_{WV} 
+% \end{align}
+%     Let $\tilde z(j) \equiv \tilde Z_i\mid_{J_i=j}$. We can then write:
+% \begin{align}
+%     \var[\tilde Z_iW_i] &= \bar\sigma_W^2\,\E[Z_iZ_i'] + \sum_{j=0}^{d_Z}\pi_j\,\xi(j)\,\tilde z(j)\tilde z(j)', \label{eq:varZW}\\
+%     \E[\tilde Z_i\tilde Z_i'W_iV_i] &= \bar\sigma_{WV}\,\E[Z_iZ_i'] + \sum_{j=0}^{d_Z}\pi_j\,\zeta(j)\,\tilde z(j)\tilde z(j)'. \label{eq:EZWV}
+% \end{align}
+% Inserting into the expression for \(\boldsymbol{\beta}_{zols}\), we obtain:
+% \begin{align}\label{eq:betazols-decomp}
+%     \boldsymbol{\beta}_{zols} = \frac{\bar \sigma_{WV}}{p^*(1-p^*)}\boldsymbol{\iota}_{d_Z} + \frac{1}{p^*(1-p^*)}\E[Z_iZ_i']^{-1}\sum_j\pi_j\,\zeta(j)\,\tilde z(j)\tilde z(j)'.
+% \end{align}
+% Define 
+% \begin{align}
+%     \bar \beta_{zols} \equiv \frac{\bar \sigma_{WV}}{p^*(1-p^*)}
+% \end{align}
+% Inserting, dividing by the trace, and rearranging, we obtain:
+% \begin{align*}
+%     \tilde{\boldsymbol{h}}_{d_Z}\tilde{\boldsymbol{h}}_{d_Z}' - \boldsymbol{\iota}_{d_Z}
+% &= \frac{1}{h^2\,p^*(1-p^*)}
+% \E[Z_iZ_i']^{-\frac{1}{2}}
+% \Big(\sum_j\pi_j\,(\xi(j) - 2\bar\beta_{zols}\zeta(j))\,\tilde z(j)\tilde z(j)'\Big)
+% \E[Z_iZ_i']^{-\frac{1}{2}} \\
+% &\qquad\qquad- \frac{1}{h^2\,(p^*(1-p^*))^2}
+% \bigg(\E[Z_iZ_i']^{-\frac{1}{2}}
+% \Big(\sum_j\pi_j\,\zeta(j)\,\tilde z(j)\tilde z(j)'\Big)
+% \E[Z_iZ_i']^{-\frac{1}{2}}\bigg)^{\!2}
+% \end{align*}
+% Observe that by \cref{eq:random-ass}, \cref{eq:convergence-1} and \cref{eq:convergence-2} we  have:
+% \begin{align*}
+%     \zeta(j) = \E[W_iV_i \mid J_i=j] = \cov[W_i,V_i \mid J_i=j] = O(1/\sqrt{n})
+% \end{align*}
+% Further, we have:
+% \begin{align*}
+%     \xi(j) = \E[W_i^2 \mid J_i=j] = \var[W_i \mid J_i=j]= \var[Y_i- \delta_n'\tilde z(j) \mid J_i=j]= \var[Y_i \mid J_i=j]
+% \end{align*}
+% Inserting for potential outcomes, we obtain:
+% \begin{align*}
+%     \var[Y_i\mid J_i=j] = \var[Y_i(0)] + 2\underbrace{\cov[Y_i(0),\,\beta_iD_i(j)]}_{\text{(A)}} + \underbrace{\var[\beta_iD_i(j)]}_{\text{(B)}}.
+% \end{align*}
+% Notice that \(\var(Y_i(0))\) does not vary across strata \(j\) by the assumption of random assignment. For the second component, we have for every \(j>j'\):
+% \begin{align*}
+%         &\cov[Y_i(0),\beta_iD_i(j)] - \cov[Y_i(0),\beta_iD_i(j')] \\ 
+%         &\qquad= \cov[Y_i(0),\,\beta_i (D_i(j)-D_i(j'))] \\
+%         &\qquad=(\E[Y_i(0)\beta_i \mid D_i(j)>D_i(j')]-\E[Y_i(0)\beta_i])\cdot \P[D_i(j)>D_i(j')] \\ 
+%         &\qquad=(\E[Y_i(0)\beta_i \mid D_i(j)>D_i(j')]-\E[Y_i(0)\beta_i])\cdot (p_n(j)-p_n(j')) = O(1/\sqrt{n})
+%     \end{align*}
+%     as \(\E[Y_i(0)\beta_i \mid D_i(j)>D_i(j')]\) is invariant in \(n\). For the third component, we can write:
+%     \begin{align*}
+%         \var[\beta_iD_i(j)] = \E[\beta_i^2D_i(j)] - (\E[\beta_iD_i(j)])^2
+%     \end{align*}
+%     For the former of these two terms we have:
+%     \begin{align*}
+%         \E[\beta_i^2D_i(j)] - \E[\beta_i^2D_i(j')] = \E[\beta_i^2\mid D_i(j)>D_i(j')]\cdot P(D_i(j)>D_i(j')) = O(1/\sqrt{n}).
+%     \end{align*}
+%     For the latter note that we have:
+%     \begin{align*}        
+%         \E[\beta_i\mid D_i(j)>D_i(j')]\cdot P(D_i(j)>D_i(j')) = O(1/\sqrt{n})
+%     \end{align*}
+%     and further
+%     \begin{align*}
+%         &\E[\beta_iD_i(j)]^2 - \E[\beta_iD_i(j')]^2 
+%         = \\
+%         &\qquad\qquad\underbrace{(\E[\beta_iD_i(j)] + \E[\beta_iD_i(j')])}_{O(1)} \cdot\underbrace{(\E[\beta_iD_i(j)] - \E[\beta_iD_i(j')])}_{O(1/\sqrt{n})} = O(1/\sqrt{n})
+%     \end{align*}
+%     where the former factor is bounded as \(p_n(j)\to p^*\) along the sequence. Combined we obtain
+%     \begin{align*}
+%         \xi(j)=O(1/\sqrt{n})
+%     \end{align*}
+%     Putting the above together, we obtain by the triangle inequality:
+% \begin{align*}
+% \lVert\tilde{\boldsymbol{h}}_{d_Z}\tilde{\boldsymbol{h}}_{d_Z}' - \boldsymbol{\iota}_{d_Z}\rVert_{\mathrm{op}}
+% &\;\leq\;
+% \frac{\lVert\E[\tilde Z_i\tilde Z_i']^{-\frac{1}{2}}\rVert_{\mathrm{op}}^2}{h^2\,p^*(1-p^*)}
+% \bigg\lVert\sum_j\pi_j\,\big(\xi(j) - 2\bar\beta_{zols}\,\zeta(j)\big)\,\tilde z(j)\tilde z(j)'\bigg\rVert_{\mathrm{op}}
+% \\
+% &\qquad\qquad\qquad\qquad\;+\;
+% \frac{\lVert\E[\tilde Z_i\tilde Z_i']^{-\frac{1}{2}}\rVert_{\mathrm{op}}^4}{h^2\,(p^*(1-p^*))^2}
+% \bigg\lVert\sum_j\pi_j\,\zeta(j)\,\tilde z(j)\tilde z(j)'\bigg\rVert_{\mathrm{op}}^2 
+% \end{align*}
+% Now observe that since
+% \begin{align}
+%     \bigg\lVert\sum_j\pi_j\,f(j)\,\tilde z(j)\tilde z(j)'\bigg\rVert_{\mathrm{op}} \leq \max_j|f(j)| \cdot \lVert\E[\tilde Z_i\tilde Z_i']\rVert_{\text{op}}
+% \end{align}
+% we have:
+% \begin{align}
+% \lVert\tilde{\boldsymbol{h}}_{d_Z}\tilde{\boldsymbol{h}}_{d_Z}' - \boldsymbol{\iota}_{d_Z}\rVert_{\mathrm{op}}
+%     &\;\leq\;
+% \frac{\lVert\E[\tilde Z_i\tilde Z_i']^{-\frac{1}{2}}\rVert_{\mathrm{op}}^2\,\lVert\E[\tilde Z_i\tilde Z_i']\rVert_{\mathrm{op}}}{|h^2|\,p^*(1-p^*)}
+% \,\max_j\big|\xi(j) - 2\bar\beta_{zols}\,\zeta(j)\big|
+% \\
+% &\qquad\qquad\qquad\;+\;
+% \frac{\lVert\E[\tilde Z_i\tilde Z_i']^{-\frac{1}{2}}\rVert_{\mathrm{op}}^4\,\lVert\E[\tilde Z_i\tilde Z_i']\rVert_{\mathrm{op}}^2}{|h^2|\,(p^*(1-p^*))^2}
+% \,\big(\max_j|\zeta(j)|\big)^2
+% \end{align}
+% And further, since \(\xi(j)\) and \(\zeta(j)\) are \(O(1/\sqrt{n})\) uniformly in \(j\) and \(\bar \beta_{zols}\) is bounded, we have:
+% \begin{align*}
+% \lVert\tilde{\boldsymbol{h}}_{d_Z}\tilde{\boldsymbol{h}}_{d_Z}' - \boldsymbol{\iota}_{d_Z}\rVert_{\mathrm{op}}
+%     \leq O(1/\sqrt{n}) + O(1/n) = O(1/\sqrt{n}) \;\to\; 0
+% \end{align*}
+% and thus \(\tilde{\boldsymbol{h}}_{d_Z}\tilde{\boldsymbol{h}}_{d_Z}'\to\boldsymbol{\iota}_{d_Z}\) along the sequence. It follows that
+% \begin{align}
+% \begin{aligned}
+%    &\hat B_{\mathrm{TSLS}}  - \beta
+%        \convd
+%        \omega \cdot
+%    \frac{ \left(\mu +R \right)^{\prime}R }
+%        { \lVert \mu+R \rVert^2} +
+%     h\cdot \frac{ \left(\mu +R \right)^{\prime} P}
+%        { \lVert \mu+R \rVert^2}
+%        \label{eq:general-dz-result-simplified}
+% \end{aligned}
+% \end{align}
+% with \(\omega\) and \(h\) as defined,
+% which was what we set out to show.
+
+% \end{proof}
+
+% \subsection{Proof of \Cref{prop:asy-jive}}
+% \label{appx:proof-asy-jive}
+% \begin{proof}
+%     Observe that we can write the JIVE estimator as:
+%     \begin{align*}
+%         \hat B_{\mathrm{JIVE}} = \frac{\overbrace{\sum_{i=1}^n\sum_{j=1}^n P_{ij}\,\tilde Y_i\tilde D_j}^{\text{TSLS Numerator}} - \sum_{i=1}^n P_{ii}\,\tilde Y_i\tilde D_i}{\underbrace{\sum_{i=1}^n\sum_{j=1}^n P_{ij}\,\tilde D_i\tilde D_j}_{\text{TSLS Denominator}} - \sum_{i=1}^n P_{ii}\,\tilde D_i^2}
+%     \end{align*}
+%     Rearranging, using the definition of \(U_i\) from the proof of \Cref{prop:asy-tsls}, this gives:
+% \begin{align*}
+%     \hat B_{\mathrm{JIVE}} - \beta = \frac{\sum_{i=1}^n\sum_{j=1}^n P_{ij}\,U_i\tilde D_j - \sum_{i=1}^n P_{ii}\,U_i\tilde D_i}{\sum_{i=1}^n\sum_{j=1}^n P_{ij}\,\tilde D_i\tilde D_j - \sum_{i=1}^n P_{ii}\,\tilde D_i^2}
+% \end{align*}
+% The first terms of the numerator and denominator obtains limits which are identical to the TSLS numerator and denominator. It remains to derive the limiting behavior of the diagonal correction. Observe that the diagonal correction in the numerator converges in probability along the sequence, and obtains:
+% \begin{align*}
+% \sum_{i=1}^n P_{ii}\,U_i\tilde D_i 
+% \;=\; 
+% \frac{1}{n}\sum_{i=1}^n \tilde Z_i'\!\left(\frac{1}{n}\sum_{k=1}^n \tilde Z_k\tilde Z_k'\right)^{-1}\!\tilde Z_i\, U_i(\gamma_n \tilde Z_i + V_i)
+% \;\convp\;
+% \E\left[\tilde Z_i'\E\left[\tilde Z_k\tilde Z_k'\right]^{-1}\!\tilde Z_i\, U_iV_i\right]
+% \end{align*}
+% where we have used that \(\gamma_n'\tilde Z_i \to 0\) as \(n\to\infty\) when not pre-multiplied by \(\sqrt{n}\).
+% Observe that
+% \begin{align*}
+%     \operatorname{tr}[\boldsymbol{\nu}_{d_Z}\boldsymbol{\omega}_{d_Z}]
+%     = \operatorname{tr}[\var[\tilde Z_iV_i]^{\frac{1}{2}}\E[\tilde Z_i\tilde Z_i']^{-1}\E[\tilde Z_i\tilde Z_i'U_iV_i]\var[\tilde Z_iV_i]^{-\frac{1}{2}}]
+%     =\operatorname{tr}[\E[\tilde Z_i\tilde Z_i']^{-1}\E[\tilde Z_i\tilde Z_i'U_iV_i]]
+% \end{align*}
+% By cyclicality of the trace operator, this simplifies to 
+% \begin{align*}
+%     \operatorname{tr}[\boldsymbol{\nu}_{d_Z}\boldsymbol{\omega}_{d_Z}]
+%     =\operatorname{tr}[\E[\tilde Z_i\tilde Z_i']^{-1}\E[\tilde Z_i\tilde Z_i'U_iV_i]]
+%     =\operatorname{tr}[\E[\E[\tilde Z_i\tilde Z_i']^{-1}\tilde Z_i\tilde Z_i'U_iV_i]]
+% \end{align*}
+% Using that \(\operatorname{tr}[Axx']=x'Ax\) for any vector \(x\) and matrix \(A\) this obtains:
+% \begin{align*}
+%     \operatorname{tr}[\boldsymbol{\nu}_{d_Z}\boldsymbol{\omega}_{d_Z}]
+%     =\E[\tilde Z_i'\E[\tilde Z_i\tilde Z_i']^{-1}\tilde  Z_i\cdot U_iV_i]
+% \end{align*}
+% % , this obtains the trace of  \(\boldsymbol{\nu}_{d_Z}\boldsymbol{\omega}_{d_Z}\), hence
+% It follows that:
+% \begin{align*}
+%     \sum_{i=1}^n P_{ii}\,U_i\tilde D_i  
+%     \convp 
+%     \operatorname{tr}\!\left[\boldsymbol{\nu}_{d_Z}\boldsymbol{\omega}_{d_Z}\right]
+% \end{align*}
+% The correction in the denominator obtains:
+% \begin{align*}
+% \sum_{i=1}^n P_{ii}\,\tilde D_i^2 
+% \;=\; 
+% \frac{1}{n}\sum_{i=1}^n \tilde Z_i'\!\left(\frac{1}{n}\sum_{k=1}^n \tilde Z_k\tilde Z_k'\right)^{-1}\!\tilde Z_i\, (\gamma_n'\tilde Z_i + V_i)^2
+% \convp \E\left[\tilde Z_i'\E\left[ \tilde Z_k\tilde Z_k'\right]^{-1}\tilde Z_i\, \cdot V_i^2\right]
+% \end{align*}
+% By the same steps as above we have:
+% \begin{align*}
+% \operatorname{tr}\!\left[\boldsymbol{\nu}_{d_Z}\right]= \operatorname{tr}[\var[\tilde Z_iV_i]^{\frac{1}{2}}\E[\tilde Z_i\tilde Z_i']^{-1}\var[\tilde Z_iV_i]^{\frac{1}{2}}]    
+% = \operatorname{tr}[\E[\tilde Z_i\tilde Z_i']^{-1}\E[\tilde Z_i\tilde Z_i'V_i^2]]    
+% \end{align*}
+% and further
+% \begin{align*}
+%     \operatorname{tr}\!\left[\boldsymbol{\nu}_{d_Z}\right]
+% = \operatorname{tr}[\E[\E[\tilde Z_i\tilde Z_i']^{-1}\tilde Z_i\tilde Z_i'V_i^2]]    
+% = \E[\tilde Z_i\E[\tilde Z_i\tilde Z_i']^{-1}\tilde Z_i' \cdot V_i^2]    
+% \end{align*}
+% and thus:
+% \begin{align*}
+% \sum_{i=1}^n P_{ii}\,\tilde D_i^2 
+%     \;\convp\;
+% \operatorname{tr}\!\left[\boldsymbol{\nu}_{d_Z}\right]
+% \end{align*}
+% It follows that
+% \begin{align*}
+%     \hat B_{\mathrm{JIVE}} - \beta 
+% \;\convd\;
+% \frac{
+%     (\mu+R)'\boldsymbol{\nu}_{d_Z}\boldsymbol{\omega}_{d_Z}\,R 
+%     + (\mu+R)'\boldsymbol{\nu}_{d_Z}\,\boldsymbol{h}_{d_Z}\,P
+%     - \operatorname{tr}\!\left[\boldsymbol{\nu}_{d_Z}\boldsymbol{\omega}_{d_Z}\right]
+% }{
+%     (\mu+R)'\boldsymbol{\nu}_{d_Z}(\mu+R) 
+%     - \operatorname{tr}\!\left[\boldsymbol{\nu}_{d_Z}\right]
+% }
+% \end{align*}
+% Dividing through by \(d_Z\operatorname{tr}[\boldsymbol{\nu}_{d_Z}]\) we obtain:
+%   \begin{align*}
+%     \hat B_{\mathrm{JIVE}} - \beta 
+% \;\convd\;
+% \frac{
+%     (\mu+R)'\tilde{\boldsymbol{\nu}}_{d_Z}\boldsymbol{\omega}_{d_Z}\,R 
+%     + (\mu+R)'\tilde{\boldsymbol{\nu}}_{d_Z}\,\boldsymbol{h}_{d_Z}\,P
+%     - \operatorname{tr}\!\left[\tilde{\boldsymbol{\nu}}_{d_Z}\boldsymbol{\omega}_{d_Z}\right]
+% }{
+%     (\mu+R)'\tilde{\boldsymbol{\nu}}_{d_Z}(\mu+R)
+%     - d_Z
+% }
+% \end{align*}  
+% Observing that along the sequence we have \(\tilde{\boldsymbol{\nu}}_{d_Z}\to \boldsymbol{\iota}_{d_Z}\), and factoring out \(\omega\) and \(h\), we see that this obtains:
+% \begin{align*}
+%     \hat B_{\mathrm{JIVE}} - \beta 
+% \;\convd\;
+% \omega \cdot \frac{
+%     (\mu+R)'\tilde{\boldsymbol{\omega}}_{d_Z}\,R 
+%     - d_Z
+% }{
+%     \lVert\mu+R\rVert^2 - d_Z
+% } + h\cdot \frac{
+%     (\mu+R)'\tilde{\boldsymbol{h}}_{d_Z}\,P
+% }{
+%     \lVert\mu+R\rVert^2 - d_Z
+% }
+% \end{align*}
+% % where we have used that \(\omega\equiv d_Z^{-1}\operatorname{tr}[\boldsymbol{\omega}_{d_Z}]\). 
+% Observing that \(\tilde{\boldsymbol{h}}_{d_Z}\to\boldsymbol{\iota}_{d_Z}\) and \(\tilde{\boldsymbol{\omega}}_{d_Z}\to\boldsymbol{\iota}_{d_Z}\) along the sequence, this finally obtains:
+% \begin{align*}
+%     \hat B_{\mathrm{JIVE}} - \beta
+% \;\convd\;
+% \omega \cdot \frac{(\mu+R)'R-d_Z}{\lVert \mu+R\rVert^2-d_Z}
+% + h\cdot \frac{(\mu+R)'P}
+%      {\lVert \mu+R\rVert^2-d_Z}.
+% \end{align*}
+% which was what we set out to show.
+% \end{proof}
+
+% \subsection{Proof of \Cref{prop:gen-jive} (\textcolor{red}{Must be checked})}
+% \label{appx:proof-gen-jive}
+% \begin{proof}
+% Note that we can decompose the first stage sum of squares, \(S\equiv \lVert\mu+R\rVert^2\) as
+% $S = T^2 + W$ where $T \sim \mathfrak{N}(\sqrt{\mu^2}, 1)$ and $W \sim \mathfrak{C}^2_{d_Z - 1}$ are independent. Write $m = \sqrt{\mu^2}$. The JIVE estimator  satisfies
+% \[
+%     \hat B_{\textup{JIVE}} - \beta = \frac{f - \omega\, d_Z}{S - d_Z}
+% \]
+% where $f = \omega(S - mT) + h(T P_\mu + \sqrt{W}\, N_2)$ with $P_\mu, N_2 \sim \mathfrak{N}(0,1)$ independent. Since $\E[P_\mu] = \E[N_2] = 0$, the Cauchy principal value of the bias is
+% \[
+%     b_{d_Z}^{\textup{JIVE}} = \omega\left(1 - \operatorname{CPV}\, \E\!\left[\frac{mT}{T^2 + W - d_Z}\right]\right).
+% \]
+% Conditioning on $W$, define $\delta = W - d_Z$ and write
+% \[
+%     \operatorname{CPV}\, \E\!\left[\frac{mT}{T^2 + \delta} \;\Big|\; W\right] = \kappa(m, \delta).
+% \]
+
+% \textbf{Case $\delta < 0$.} Set $a = \sqrt{-\delta} > 0$. The denominator $T^2 - a^2 = (T - a)(T + a)$ has real poles at $T = \pm a$. By partial fractions,
+% \[
+%     \frac{t}{t^2 - a^2} = \frac{1}{2}\left[\frac{1}{t - a} + \frac{1}{t + a}\right].
+% \]
+% The CPV of each term is the Hilbert transform of the Gaussian. Using the identity
+% \begin{equation}\label{eq:hilbert-gaussian}
+%     \operatorname{CPV}\!\int_{-\infty}^\infty \frac{\varphi(t - m)}{t - c}\,dt = \sqrt{2}\; D\!\left(\frac{m - c}{\sqrt{2}}\right),
+% \end{equation}
+% which follows from the Sokhotski--Plemelj theorem applied to the Faddeeva function $w(z) = e^{-z^2}\operatorname{erfc}(-iz)$, we obtain
+% \begin{align*}
+%     \kappa(m, \delta) &= \frac{m}{2}\left[\sqrt{2}\; D\!\left(\frac{m - a}{\sqrt{2}}\right) + \sqrt{2}\; D\!\left(\frac{m + a}{\sqrt{2}}\right)\right] \\
+%     &= \frac{m}{\sqrt{2}}\left[D\!\left(\frac{m - \sqrt{-\delta}}{\sqrt{2}}\right) + D\!\left(\frac{m + \sqrt{-\delta}}{\sqrt{2}}\right)\right].
+% \end{align*}
+
+% \textbf{Case $\delta = 0$.} The denominator $T^2$ has a single pole at $T = 0$. Since $D(0) = 0$, the formula above reduces to $\kappa(m, 0) = m\sqrt{2}\; D(m/\sqrt{2})$.
+
+% \textbf{Case $\delta > 0$.} The denominator $T^2 + \delta > 0$ for all $T$, so no principal value is needed and $\kappa(m,\delta) = \int m\,t\,/(t^2+\delta)\;\varphi(t-m)\,dt$ is a regular integral.
+
+% Integrating over $W \sim \mathfrak{C}^2_{d_Z-1}$ yields the result.
+
+% \end{proof}
+
+% \subsection{Proof of \Cref{lem:nagar} (\textcolor{red}{Must be checked})}
+% \label{appx:proof-nagar}
+
+%  \begin{proof}
+%   Write $T \equiv \mu + R \sim \mathfrak{N}(\mu, I_{d_Z})$, so that $\|T\|^2 = \|\mu+R\|^2$.
+%   Substituting $R = T - \mu$ into the $\omega$-components of the limiting distributions,
+%   the bias of each estimator takes the form
+%   \begin{align*}
+%       b_{\textup{TSLS}}/\omega
+%           = 1 - \mathbb{E}\!\left[\frac{\mu'T}{\|T\|^2}\right],
+%       \qquad
+%       b_{\textup{JIVE}}/\omega
+%           = 1 - \mathbb{E}^{\textup{PV}}\!\left[\frac{\mu'T}{\|T\|^2 - d_Z}\right],
+%   \end{align*}
+%   since $\mu'R + \|R\|^2 = \|T\|^2 - \mu'T$
+%   and the $h$-component has zero expectation by independence of $R$ and $P$.
+
+%   \medskip\noindent\emph{Step 1: Decompose into parallel and perpendicular components.}
+%   Let $s = \sqrt{\mu^2}$, $u = \mu/s$.
+%   Decompose $R = \epsilon\, u + R_\perp$ where
+%   \begin{align*}
+%       \epsilon \equiv u'R \sim \mathfrak{N}(0,1),
+%       \qquad
+%       W \equiv \|R_\perp\|^2 \sim \mathfrak{C}^2_{d_Z-1},
+%       \qquad \epsilon \perp\!\!\!\perp W.
+%   \end{align*}
+%   Then $\mu'T = s(s + \epsilon)$ and $\|T\|^2 = (s+\epsilon)^2 + W$,
+%   so both bias expressions reduce to
+%   \begin{align}\label{eq:nagar-cond-ratio}
+%       b_\star/\omega = 1 - \mathbb{E}_\star\!\left[\frac{s(s + \epsilon)}{(s+\epsilon)^2 + \delta_\star}\right],
+%   \end{align}
+%   where $\delta_{\textup{TSLS}} = W$ and $\delta_{\textup{JIVE}} = W - d_Z$.
+
+%   \medskip\noindent\emph{Step 2: Expand, conditioning on $W$.}
+%   Write $t = s + \epsilon$ and expand for large $s$
+%   by setting $X = (2\epsilon/s) + (\epsilon^2 + \delta)/s^2$:
+%   \begin{align*}
+%       \frac{st}{t^2 + \delta}
+%           &= (1 + \epsilon/s)\,\frac{1}{1 + X}
+%           = (1 + \epsilon/s)(1 - X + X^2 - \cdots).
+%   \end{align*}
+%   Retaining terms through order $s^{-2}$
+%   (noting $X = O_p(s^{-1})$, $X^2 = O_p(s^{-2})$):
+%   \begin{align*}
+%       \frac{st}{t^2 + \delta}
+%           = 1 - \frac{\epsilon}{s}
+%             + \frac{\epsilon^2 - \delta}{s^2}
+%             + O(s^{-3}).
+%   \end{align*}
+%   Conditioning on $W$ and using $\mathbb{E}[\epsilon] = 0$, $\mathbb{E}[\epsilon^2] = 1$:
+%   \begin{align*}
+%       \mathbb{E}\!\left[\frac{st}{t^2 + \delta}\;\Big|\;W\right]
+%           = 1 + \frac{1 - \delta}{\mu^2} + O(\mu^{-4}).
+%   \end{align*}
+
+%   \medskip\noindent\emph{Step 3: Average over $W$.}
+%   Taking expectations over $W \sim \mathfrak{C}^2_{d_Z-1}$ with $\mathbb{E}[W] = d_Z - 1$:
+
+%   \emph{TSLS} ($\delta = W$):
+%   $\;\;\mathbb{E}\!\left[\frac{st}{t^2 + W}\right]
+%       = 1 + \frac{1 - (d_Z - 1)}{\mu^2} + O(\mu^{-4})
+%       = 1 - \frac{d_Z - 2}{\mu^2} + O(\mu^{-4}).$
+
+%   \emph{JIVE} ($\delta = W - d_Z$):
+%   $\;\;\mathbb{E}\!\left[\frac{st}{t^2 + W - d_Z}\right]
+%       = 1 + \frac{1 - (d_Z - 1) + d_Z}{\mu^2} + O(\mu^{-4})
+%       = 1 + \frac{2}{\mu^2} + O(\mu^{-4}).$
+
+%   \noindent
+%   Substituting into \eqref{eq:nagar-cond-ratio}:
+%   $\ddot{b}^{\textup{TSLS}} = \omega(d_Z - 2)/\mu^2$
+%   and
+%   $\ddot{b}^{\textup{JIVE}} = -2\omega/\mu^2$.
+%   The expansion is a valid Poincar\'e asymptotic series:
+%   on $\{|\epsilon| \leq s^{1/2-\varepsilon_0}\}$ the geometric series converges
+%   and term-by-term integration is justified;
+%   the complement has Gaussian probability $O(e^{-s^{1-2\varepsilon_0}})$.
+  
+%   \end{proof}
+
+% \paragraph*{Alternative proof}
+%  \begin{proof}
+% We follow \cite{nagarBiasMomentMatrix1959} and \cite{rothenbergAsymptoticPropertiesEstimators1983}.
+%   From the limiting distributions of the TSLS and JIVE estimators, the bias of each equals $\omega$ times the expectation (or
+%   principal value, for JIVE) of $N_\star/D_\star$, where
+%   \begin{align*}
+%       &\textup{TSLS:}\quad N = \mu'R + \|R\|^2,\quad D = \mu^2 + 2\mu'R + \|R\|^2,\\
+%       &\textup{JIVE:}\quad N_J = \mu'R + \|R\|^2 - d_Z,\quad D_J = \mu^2 + 2\mu'R + \|R\|^2 - d_Z,
+%   \end{align*}
+%   with $R\sim\mathfrak{N}(0, I_{d_Z})$, and the $h$-component has zero expectation by independence of $R$ and $P$. Write $s =
+%   \sqrt{\mu^2}$ and $u = \mu/s$ with $\|u\|=1$. Defining $Q \equiv \|R\|^2$ for TSLS and $Q_J \equiv \|R\|^2 - d_Z$ for JIVE, we can
+%   treat both cases uniformly. The denominators factor as $D_\star = s^2(1 + X_\star)$ with $X_\star = 2u'R/s + Q_\star/s^2$. On the
+%   event $\{\|R\|\leq s^{1/2-\epsilon}\}$, $|X_\star|<1$ and we expand
+%   \begin{align*}
+%       \frac{N_\star}{D_\star}
+%       = \frac{su'R + Q_\star}{s^2}\sum_{k=0}^{\infty}(-X_\star)^k
+%       = \frac{u'R}{s} + \frac{Q_\star}{s^2} - \frac{2(u'R)^2}{s^2} + O(s^{-3}),
+%   \end{align*}
+%   where the last equality retains terms through order $s^{-2}$: the $k=0$ term contributes $u'R/s + Q_\star/s^2$; the $k=1$ term
+%   $-su'R\cdot 2u'R/(s\cdot s^2)=-2(u'R)^2/s^2$; all remaining terms are $O(s^{-3})$.
+
+%   Taking expectations and using $\mathbb{E}[R]=0$ and $\mathbb{E}[(u'R)^2]=1$,
+%   \begin{align*}
+%       \mathbb{E}_\star\!\left[\frac{N_\star}{D_\star}\right] = \frac{\mathbb{E}[Q_\star] - 2}{\mu^2} + O(\mu^{-4}).
+%   \end{align*}
+%   For TSLS: $\mathbb{E}[Q] = \mathbb{E}[\|R\|^2] = d_Z$, giving $\omega(d_Z-2)/\mu^2$. For JIVE:
+%   $\mathbb{E}[Q_J]=\mathbb{E}[\|R\|^2-d_Z]=0$, giving $-2\omega/\mu^2$. This is a valid Poincar\'e asymptotic expansion: on
+%   $\{\|R\|\leq s^{1/2-\epsilon}\}$ the geometric series converges and term-by-term integration is justified; the complement has
+%   Gaussian probability $O(e^{-s^{1-2\epsilon}})$, contributing only to the remainder.
+%   \end{proof}
+
+%   The unified structure makes the key insight transparent: the only difference between TSLS and JIVE at leading order is $E[Q]$ vs
+%   $E[Q_J]$. The JIVE centering replaces $|R|^2$ (mean $d_Z$) with $|R|^2 - d_Z$ (mean 0), killing the "diffuse" $d_Z$ contribution
+%   and leaving only the "focused" cross-term $-2(u'R)^2$, which has expectation $-2$ regardless of $d_Z$.
+% % \begin{proof}
+    
+% % \end{proof}
+
+% \subsection{Proof of \Cref{prop:comb}}
+% \label{appx:proof-combo}
+
+% \begin{proof}
+% From \Cref{lem:nagar}, the Nagar bias of a combination estimator with weights \(\eta\) is given as:
+%      $$\eta\, \ddot b_{d_Z}^{\textup{TSLS}} + (1-\eta)\, \ddot b_{d_Z}^{\textup{JIVE}} =
+%   \frac{\omega}{\mu^2}\left[\eta(d_Z - 2) - 2(1-\eta)\right]$$ 
+%   Setting this to zero and solving for \(\eta\) gives: 
+%   $$\eta = 2/d_Z$$
+%   This gives weights \(\eta\in[0,1]\) for \(d_Z\geq 2\). The result follows.
+% \end{proof}
+

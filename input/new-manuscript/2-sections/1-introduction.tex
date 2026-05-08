@@ -1,0 +1,101 @@
+\section{Introduction}
+
+
+
+Structure:
+\begin{enumerate}
+    \item 
+    Short intro: Use of IV, constant effects vs. het effects
+    \item 
+    Explain shortcomings of AR and CLR
+    \item 
+    Then explain your method
+    \item 
+    Then do lit review: Whole shebang, but just inference (old stuff, AR, Moreira, Andrews) many weak inference (MS, Yap) osv.
+\end{enumerate}
+
+Notes.
+
+\begin{itemize}
+    \item 
+    IV Methods are popular, were invented in macro, but recently have become popular in applied micro, assume heterogeneous treatment effects
+    \item 
+    The weak instruments literature has developed to provide robust tests. However, it still does not provide test robust to weak instrument in the presence of more than one insturment and heterogeneous trestment effects
+    \item 
+    To see this, the commonly used AR test, from which the more powerful CLR test is built, tests a joint hypothesis, gamma, delta beta. A joint test of (a) and (b), can reject in either case.
+    \item 
+    Multiple instruments and heterogeneous effects not uncommon. Consider for example the review of judge literature in Chun et al. (see other papers)
+    \item 
+    This is what we do: ...
+    \item 
+    The paper proceeds as follows.
+\end{itemize}
+
+
+There exist three approaches in the literature to performing inference on the TSLS estimand. The first class of test are valid with strong instruments, but not with weak instruments. One example of this is the TSLS Wald test. In their seminal study of weak instruments, \cite{staigerInstrumentalVariablesRegression1997} show that this test does not retain size when instruments are weak. The second class of tests are valid under the assumption of constant treatment effects. Examples of such tests are the \cite{andersonEstimationParametersSingle1949} AR test and the \cite{moreiraConditionalLikelihoodRatio2003} CLR test. The third class of tests are valid with many instruments. The only example of such a tests which also allow for heterogeneous treatment effects is the \cite{yapInferenceManyWeak2025} Jackknife LM test.
+
+The fact that the AR and CLR tests are not valid with heterogeneous treatment effects is not a fact that has gained much attention. As such it is instructive to review why this is the case. We proceed to do this in the following. Observe that the AR test is a test of the hypothesis
+\begin{align}
+    \mathcal{H}_0: \delta_n - \beta_0 \gamma_n = 0
+\end{align}
+This hypothesis can be rewritten as follows
+\begin{align}
+    \mathcal{H}_0: \beta = \beta_0 \qquad \land  \qquad \exists\   \beta \ \ \text{ s.t. }\ \delta_n =  \beta \gamma_n 
+\end{align}
+In other words, it is a composite hypothesis, testing both whether there exists a scalar \( \beta\) such that \(\delta_n =  \beta \gamma_n\) and whether this \( \beta\) is the hypothesized \(\beta_0\). To understand why this is the case, observe that the AR test can be decomposed into two parts as follows
+% As such, it is not a test of the TSLS estimand per se, but a test of a constant effects coefficient, which happens to coencide with the TSLS estimand when effects are in fact constant. 
+\begin{align}
+    AR(\beta_0) = LM(\beta_0) + J(\beta_0)
+\end{align}
+where \(LM(\beta_0)\) is the \cite{kleibergenGeneralizingWeakInstrument2007} test of \(\beta=\beta_0\), assuming that there eixstis a \( \beta\) such that \(\delta_n =  \beta \gamma_n \), and \(J(\beta_0)\) is the \cite{sarganEstimationEconomicRelationships1958}--\cite{hansenLargeSampleProperties1982} test of overidentification, i.e. of exogeneity. Maintaining the assumption of strict exogeneity, J test can also be viewed as a test of constant effects, i.e. a test which rejects under heterogeneous treatment effects. The \cite{moreiraConditionalLikelihoodRatio2003} CLR test improves upon the LM test in terms of direction of power, but is only valid under the assumption that there exists a scalar \( \beta\)  such that \( \delta_n =  \beta \gamma_n \).
+
+
+
+% , i.e. of whether there exists a scalar \( \beta\)  such that \( \delta_n = \tilde \beta \gamma_n \)
+% As the strength of the instrument set increases, this test rejects more often. 
+
+% Motivation:
+% \begin{itemize}
+%     \item 
+%     The study of weak instruments in the overidentified setting has mostly focused on...
+
+%     \item 
+%     The current suggestion in judge IV settings is to use UJIVE. However, JIVE has poor properties with few instruments, and in particular when the instrument is weak (see e.g. \citealp{davidsonCaseJIVE2006})
+
+
+%     \item 
+%     A large literature studies the properties of the TSLS estimator with some combination of many instruments and weak instruments (see e.g. \citealp{bekkerAlternativeApproximationsDistributions1994},
+%     \citealp{staigerInstrumentalVariablesRegression1997},
+%     \citealp{stockTestingWeakInstruments2005} and \citealp{chaoConsistentEstimationLarge2005})
+%     \item 
+%     There exist some results which are valid under generalized non-homoskedasticity (see e.g. \citealp{oleaRobustTestWeak2013}), however, methods implied by this approach are conservative. Furthermore, these results are in general stated in the context of constant effects, and not derived for the setting of heterogeneous treatment effects.
+    
+%     \item 
+%     The LIML (\citealp{andersonEstimationParametersSingle1949}) and Fuller-k (\citealp{fullerPropertiesModificationLimited1977}) estimators are known to have favorable properties with many instruments, including when instruments are weak. In particular. Their properties under heteroskedasticity are improved by the HLIM and HFUL estimators (\citealp{hausmanInstrumentalVariableEstimation2012}). These estimators are all consistent under weak instruments as long as there are many weak instruments. However, as is shown by \cite{kolesarEstimationInstrumentalVariables2013}, they do not necessarily target an estimand in the convex hull of local average treatment effects (LATE), i.e. a positively weighted average.
+
+%     \item 
+%     Current advice with many weak instruments and heterogeneous effects is to use the JIVE, or more particularly the ``Unbiased JIVE'' (UJIVE) estimator. In the context of a saturated first stage, this uses the leave-out mean to estimate first-stage predictors (``leniency'' in the judge / examiner setting). However, the properties of the (U)JIVE estimator are primarily studied in settings where \(d_Z\to\infty\). Results for a fixed number of instruments are lacking.
+
+%     \item 
+%     As is shown in monte carlo simulations by \cite{davidsonCaseJIVE2006}, the JIVE estimator performs poorly when instruments are weak. This property comes from the fact that the leave-out properties of the first stage essentially brings distribution of the estimator closer to zero, resembling the properties of the IV estimator.
+
+%     \item 
+%     There is work on inference with many weak instruments, but this has mostly focused on the setting where the number of instruments is modelled as growing with the sample size, and has mostly focused on the constant-effects setting (see e.g. \citealp{mikushevaInferenceManyWeak2022}, \citealp{mikushevaWeakIdentificationMany2024}). \cite{evdokimovInferenceInstrumentalVariables2018} derived methods for conducting inference with heterogeneous treatment effects, and \cite{yapInferenceManyWeak2025} inference with heterogeneous treatment effects and many weak instruments. However, less work has been done in the setting of some (but not many) weak instruments under the assumption of heterogeneous treatment effects.
+
+%     \item 
+%     In this paper we make the following contributions:
+%     \begin{enumerate}
+%         \item 
+%         We derive an asymptotic approximation to the distribution of the TSLS estimator with weak instruments with binary treatment, that allows for generalized non-homoskedasticity and heterogeneous treatment effects
+%         \item 
+%         We derive an asymptotic approximation to the distribution of the Jackknife IV (JIVE) estimator and its unbiased cousin UJIVE, with binary treatment and a fixed number of weak instruments, allowing for generalized non-homoskedasticity and heterogeneous treatment effects
+%         \item 
+%         We derive the bias of the TSLS and (U)JIVE with weak instruments and binary treatment, under generalized non-homoskedasticity and heterogeneous treatment effects
+%         \item 
+%         We devise a new unbiased estimator, the combined TSLS-JIVE estimator, that sets the asymptotic Nagar bias to zero. We show that it behaves well in simulations, and has bias not too dissimilar to the HFUL estimator. However, unlike HFUL, it is consistent for a positively weighted average of LATEs.
+%     \end{enumerate}
+    
+    
+    
+% \end{itemize}
+% TBC.

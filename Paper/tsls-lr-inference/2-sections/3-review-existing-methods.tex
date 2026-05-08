@@ -1,0 +1,58 @@
+\section{On the Validity of Existing Weak-instrument Robust Tests}
+
+\label{sec:ar-clr}
+
+In the following, we proceed to show that the \cite{andersonEstimationParametersSingle1949} AR test, the \cite{kleibergenGeneralizingWeakInstrument2007} LM test and the \cite{moreiraConditionalLikelihoodRatio2003} CLR test do not retain size under the combination of weak instruments and treatment effect heterogeneity, when \(d_Z>1\). We record the definitions of the statistics, in the notation \cite{finlayImplementingWeakInstrumentRobust2009}.
+\input{2-sections/statements/05-D-LEG}
+\noindent
+With constant effects, we have the following limiting distributions.
+\input{2-sections/statements/06-LEG-CTE}
+\begin{proof}
+    See Appendix~\ref{sec:proof-leg-cte}.
+\end{proof}
+\noindent
+With treatment effect heterogeneity, this result no longer obtains.
+\input{2-sections/statements/07-LEG-HTE}
+\begin{proof}
+    See Appendix~\ref{sec:proof-leg-hte}.
+\end{proof}
+\begin{remark} 
+We make two observations.
+\begin{enumerate}
+    \item 
+    AR and CLR are centered away from zero whenever \(\nu^2>0\), i.e. in the presence of heterogeneous treatment effects. The result holds in the limit as \(\mu^2\to\infty\). 
+    \item 
+    LM  is centered away from zero whenever \(\nu^2>0\) and \(\mu^2<\infty\). The test is centered at zero in the limit as \(\nu^2>0\) if \(\mu^2\to\infty\).    
+\end{enumerate}
+As a consequence, neither AR, CLR or LM are valid tests under the combination of weak instruments and treatment effect heterogeneity.
+\end{remark}
+\noindent 
+In \Cref{fig:other-tests}, we plot the size of the AR, LM and CLR tests, used as as (quasi-)tests for the TSLS hypothesis  \(\beta=\beta_0\), under the assumption of constant effects, and with treatment effect heterogeneity.
+In panel (a), we see that the AR, LM and CLR tests are valid with constant treatment effects at every level of instrument strength. In panel (b), we see that with treatment effect heterogeneity,  all three tests overreject. We see that the degree of overrejection is increasing in instrument strength for AR and CLR and decreasing for LM. 
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{figs/inference_size_dz5_rho0.999.pdf}
+    \caption{\textbf{Overrejection of the Wald, AR and CLR Tests Under Heterogeneous Treatment Effects} This figure plots the rate of over-rejection of the hypothesis \(\beta=\beta_0\) when \(\beta\) is homogeneous, and when it is the TSLS/JIVE estimand (heterogeneous treatment effects), with weak instruments. The red line shows the Wald test, the blue line the \cite{andersonEstimationParametersSingle1949} AR test and the green line the \cite{moreiraConditionalLikelihoodRatio2003} CLR test. The y axis shows the rejection rate (size), and the x axis enumerates instrument strength.}
+    \label{fig:other-tests}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

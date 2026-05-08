@@ -1,0 +1,9 @@
+\begin{lemmap}{STAT}[Summary Statistic]\label{lem:stat}
+Let \(\hat S \equiv \lVert (\hat\Sigma/n)^{-\frac{1}{2}}\hat \tau\rVert^2/d_Z\).
+Then,
+\begin{align*}
+    d_Z\hat S  \convd \mathfrak{C}^2_{2d_Z}\left(\xi\right)
+\end{align*}
+where \(\xi \equiv \lVert (\Sigma/n)^{-\frac{1}{2}}\tau_n\rVert^2\).
+Let  \( \Sigma_{\hat\delta \mid \hat\gamma} \equiv  \Sigma_{\hat \delta} - \Sigma_{\hat \delta,\hat \gamma} \Sigma_{\hat \gamma}^{-1}\Sigma_{\hat \delta,\hat \gamma}' \), and let \(\mu^2, \nu^2, \eta^2\) denote three scalars, where \(\mu^2\equiv \lVert  (\Sigma_{\hat \gamma}/n)^{-\frac{1}{2}}\gamma_n\rVert^2\) is the concentration parameter, \(\nu^2 \equiv \lVert (\Sigma_{\hat\delta \mid \hat\gamma}/n)^{-\frac{1}{2}} (\delta_n-\beta\gamma_n)\rVert^2\) captures treatment effect heterogeneity and \(\eta^2 \equiv\lVert (\Sigma_{\hat\delta \mid \hat\gamma}/n)^{-\frac{1}{2}}\gamma_n(\beta_{ols}-\beta)\rVert^2\) captures, among other things, endogeneity. We then have \(\xi = \mu^2 + \nu^2 + \eta^2\).
+\end{lemmap}

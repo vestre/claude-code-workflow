@@ -1,0 +1,52 @@
+\begin{proof}
+    TBD. See: \textcolor{red}{Written before the redefinition of \(\xi\) (used to be \(\xi_+\) only). }
+
+    we can write the secular equation along the weak instruments limiting sequence as:
+\begin{align*}
+    \frac{ \kappa_+^* }{(1+\lambda^*\kappa^*_+)^2}\sum_{\kappa_j>0}W_{j}^2
+    -\frac{ \lvert\kappa_-^*\rvert }{(1-\lambda^*\lvert\kappa_-^*\rvert)^2}\sum_{\kappa_j<0}W_{j}^2  = 0
+\end{align*}
+Observe now that
+\begin{align}
+    Q_+ \equiv \sum_{\kappa_j>0}W_j^2 \sim \mathfrak{C}^2_{d_Z}(\xi_+)
+    \qquad \text{and}
+    \qquad
+    Q_- \equiv \sum_{\kappa_j<0}W_j^2 \sim \mathfrak{C}^2_{d_Z}(\xi_-)
+\end{align}
+where \(Q_+,Q_-\) are independent, and under the null we have along the asymptotic sequence, where \(\sqrt{n}w_n=w\), that:
+\begin{align*}
+    \sum_{j=1}^{2d_Z}\kappa_jw_j^2 = 0
+    \iff
+        \lvert\kappa_-\rvert\sum_{\kappa_j<0}w_j^2 = \kappa_+\sum_{\kappa_j>0}w_j^2
+\end{align*}
+and by the properties of non-central chi-squared distributions, this implies \(\varrho^*\xi_- = \xi_+ \equiv \xi\).
+The secular equation thus simplifies as:
+\begin{align*}
+    \frac{ Q_+ }{(1+\lambda^*\kappa^*_+)^2}
+     = \frac{ \varrho^* Q_- }{(1-\lambda^*\lvert\kappa_-^*\rvert)^2}
+\end{align*}
+Taking the root and solving for \(\lambda^*\kappa_+^*\), we obtain:
+\begin{align*}
+\lambda^*\kappa_+^* =
+    \frac{ \sqrt{Q_+}-\sqrt{\varrho^*Q_-}}{\varrho^*\sqrt{Q_+} + \sqrt{\varrho^*Q_-}}
+    \label{eq:secular-simplific}
+\end{align*}
+% TODO: \Cref{conj:binary-treat-limit} is not (yet) declared anywhere. Either add the conjecture or remove this conditional clause.
+Under \Cref{conj:binary-treat-limit} the LR statistic obtains:
+\begin{align*}
+    \mathrm{TLR}(\beta_0) \convd
+     \left(\frac{\lambda^*  \kappa^*_+}{1+\lambda^* \kappa^*_+}\right)^2Q_++\left(\frac{\lambda^*  \kappa^*_-}{1+\lambda^* \kappa^*_-}\right)^2Q_-
+\end{align*}
+Inserting for \cref{eq:secular-simplific} in this limit, we obtain:
+\begin{align*}
+    \mathrm{TLR}(\beta_0) \convd
+     \left(\frac{\sqrt{Q_+}-\sqrt{\varrho^* Q_-}}{\left(1+\varrho^*\right) \sqrt{Q_+}}\right)^2 Q_+
+     +\left(\frac{\varrho^*\left(\sqrt{Q_+}-\sqrt{\varrho^* Q_-}\right)}{\left(1+\varrho^*\right) \sqrt{\varrho^* Q_-}}\right)^2 Q_-
+\end{align*}
+This simplifies to:
+\begin{align}
+    \mathrm{TLR}(\beta_0) \convd
+    \frac{\left(\sqrt{Q_+}-\sqrt{\varrho^* Q_-}\right)^2}{1+\varrho^*}
+\end{align}
+where \(Q_+ \sim \mathfrak{C}^2_{d_Z}(\xi)\) and \(Q_- \sim \mathfrak{C}^2_{d_Z}(\xi/\varrho^*)\).
+\end{proof}

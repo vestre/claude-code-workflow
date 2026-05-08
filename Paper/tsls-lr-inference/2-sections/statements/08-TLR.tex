@@ -1,0 +1,14 @@
+\begin{propositionp}{TLR}[The TSLS Likelihood Ratio Statistic]\label{prop:tlr}
+The asymptotic likelihood ratio statistic for the hypothesis \(\beta=\beta_0\) is given as
+\begin{align*}
+\mathrm{TLR}(\beta_0) = \min_{\tau_n \in \R^{2d}}\,n(\hat \tau -\tau_n)'\hat\Sigma^{-1}(\hat \tau - \tau_n) \qquad \text{s.t.} \qquad \tau_n'\,\hat\Gamma(\beta_0) \,\tau_n = 0
+\end{align*}
+where \(\hat\Gamma(\beta_0)\) is a consistent estimator for \(\Gamma(\beta_0)\).
+The program has a unique solution,
+    \begin{align*}
+    \mathrm{TLR}(\beta_0) = \sum_{j=1}^{2d_Z} \hat W_j^2\!\left(\frac{\lambda^*\hat\kappa_j}{1+\lambda^*\hat\kappa_j}\right)^{\!2}
+    \quad\text{s.t.}\quad
+    \sum_{j=1}^{2d_Z}\frac{\hat\kappa_j \hat W_j^2}{(1+\lambda^*\hat\kappa_j)^2} = 0
+\end{align*}
+where \(\hat \kappa_j\) denote the eigenvalues of \(\hat \Lambda(\beta_0)\), \(\hat W_j\) denote the elements of \(\hat W\) and \(\lambda^*\in[(\min_{j:\hat\kappa_j<0}\hat\kappa_j)^{-1},(\max_{j:\hat\kappa_j>0}\hat\kappa_j)^{-1}]\) is unique.
+\end{propositionp}

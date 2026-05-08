@@ -1,0 +1,162 @@
+\section{Set-up and Notation}
+
+\label{sec:set-up-not}
+
+\paragraph*{Fundamentals.}
+Let \(\{(Y_i,D_i,Z_i)\}_{i=1}^n\) be an i.i.d. sample, where \(Y_i\) is an outcome, \(D_i\) a treatment, both scalar, and \(Z_i\) a vector of \(d_Z\) instruments. 
+Assume, without loss of generality,  all variables are demeaned and have finite fourth moment.
+In the presence of covariates, let \(Y_i\) and \(D_i\) denote variables where the impact of the covariates is appropriately projected off. 
+We are interested in the linear  heterogeneous treatment effects model,
+\begin{align}
+       Y_i &= \beta_i D_i + U_i\label{eq:model-equation}
+\end{align}
+where \(\beta_i\) is the causal effect of \(D_i\) on \(Y_i\), and \(U_i\) is the model residual.
+Denote the linear regressions of  \(Y_i\) on \(Z_i\)  (reduced form) and \(D_i\) on \(Z_i\)  (first stage) as,
+\begin{align}
+Y_i &=  \delta_n' Z_i + W_i \label{eq:reduced-form-equation}\\ 
+D_i &= \gamma_n' Z_i + V_i \label{eq:first-stage-equation}  
+\end{align}
+where \(\gamma_n\) is the vector of first-stage coefficients,
+\(\delta_n\) the vector of reduced-form coefficients, and \(V_i\) and \(W_i\)
+are regression residuals. 
+
+The subscripts on \(\gamma_n\) and \(\delta_n\) indicate that we do not restrict 
+the data generating process to be invariant with respect to the sample size \(n\). In particular, in order to analyze weak-instrument properties of our procedures, we follow \cite{staigerInstrumentalVariablesRegression1997} in letting \((\delta_n, \gamma_n)\) drift towards zero at some rate \((\bar \delta, \bar \gamma)\), such that
+   \(\delta_n \equiv  {\bar \delta}/{\sqrt{n}}\) and 
+   \(\gamma_n \equiv  {\bar \gamma}/{\sqrt{n}} \).
+In order to study the properties of our test with strong instruments, we hold \((\delta_n, \gamma_n)\) fixed as \(n\to\infty\).
+We maintain the following assumptions.
+\input{2-sections/statements/01-A-IVR}
+\input{2-sections/statements/02-A-IVX}
+\noindent
+Observe that \Cref{ass:exog} is stronger than the (weak) exogeneity usually assumed in a constant effects model, \(\E[Z_iU_i]=\mathbf{0}_{d_Z}\). However, it is equivalent to the assumptions usually maintained
+in order to obtain identification of models with heterogeneous treatment effects, either in the binary  (see e.g. \citealp{angristTwoStageLeastSquares1995}) or continuous treatment case (see e.g. \citealp{angristInterpretationInstrumentalVariables2000}). However, no assumption is imposed on  the monotonicity (uniformity) of \(D_i(z)\) in \(z\). 
+
+
+
+
+
+\paragraph*{Observed moments.}
+Let \((\hat \delta,\hat \gamma)\) be OLS estimators of \((\delta_n,\gamma_n)\). The two estimators have the following joint limiting distribution.\footnote{Throughout, \(\mathfrak{N}(\mu,\Sigma)\) denotes a (multivariate) normal distribution with mean \(\mu\) and variance \(\Sigma\), and \(\mathfrak{C}^2_k(\lambda)\) denotes a non-central chi-squared distribution with \(k\) degrees of freedom and non-centrality parameter \(\lambda\) (central when \(\lambda\) is omitted).}
+\begin{align}
+    \begin{bmatrix}
+        \sqrt{n}\,(\hat \delta - \delta_n) \\
+        \sqrt{n}\,(\hat \gamma - \gamma_n) \\
+    \end{bmatrix}
+    \convd
+    \mathfrak{N}\left(\mathbf{0}_{2d_Z},\Sigma\right)
+    \qquad 
+    \Sigma   \equiv 
+   \begin{bmatrix}
+       \Sigma_{\hat \delta} & \Sigma_{\hat \delta,\hat \gamma} \\ 
+       \Sigma_{\hat \delta,\hat \gamma}' & \Sigma_{\hat \gamma}
+   \end{bmatrix}
+\end{align}
+It will later be convenient to write
+\(\tau_n \equiv \left[\begin{smallmatrix}
+    \delta_n \\ 
+    \gamma_n
+\end{smallmatrix}\right]\) and 
+\(\hat \tau \equiv \left[\begin{smallmatrix}
+    \hat \delta \\ 
+    \hat \gamma
+\end{smallmatrix}\right]\), and
+the limiting distribution as \(\sqrt{n}(\hat\tau-\tau_n) \convd \mathfrak{N}(\mathbf{0}_{2d_Z},\Sigma)\). 
+
+\paragraph*{The TSLS Hypothesis.}
+Let \(\beta\) denote the two-stage least squares (TSLS) estimand,  a  positively weighted average of local average treatment effects (LATEs), targeted by the TSLS and Jackknife IV estimators (\citealp{kolesarEstimationInstrumentalVariables2013}). It is defined as follows.
+\begin{align}
+    \beta \equiv \frac{\gamma_n'\Sigma_{ZZ}\delta_n}{\gamma_n'\Sigma_{ZZ}\gamma_n}
+\end{align}
+where \(\Sigma_{ZZ}\equiv \E[Z_iZ_i']\) denotes the population gram matrix of \(Z_i\).
+The TSLS estimand admits a causal interpretation under certain assumptions, see e.g. \cite{angristTwoStageLeastSquares1995} and \cite{mogstadCausalInterpretationTwoStage2021}.
+Hypotheses about the estimand, \(\beta=\beta_0\), can be rewritten as a quadratic constraint, \(\gamma_n'\Sigma_{ZZ}(\delta_n -\beta_0\gamma_n) = 0\).
+In terms of \(\tau_n\), we obtain,
+\begin{align}
+    \tau_n'\,\hat\Gamma(\beta_0) \,\tau_n = 0 \qquad \text{where} \qquad
+    \Gamma(\beta_0) \equiv 
+    \begin{bmatrix}
+        0 & \Sigma_{ZZ} \\
+        \Sigma_{ZZ} & -2\beta_0\Sigma_{ZZ}
+    \end{bmatrix}
+\end{align}
+
+\paragraph*{Eigenvalue Representation.}
+
+Define the rotation of  \(\Gamma(\beta_0)\) in terms of \(\Sigma\)  as follows.
+\begin{align}
+\Lambda(\beta_0) \equiv 
+\Sigma^{\frac{1}{2}} 
+\Gamma(\beta_0)
+\Sigma^{\frac{1}{2}}
+\end{align}
+\(\Lambda(\beta_0)\) is an indefinite matrix. However, the block-structure of \(\Gamma(\beta_0)\) imposes structure on the sign of its eigenvalues. Under \Cref{ass:exog}, the structure simplifies further.
+\input{2-sections/statements/03-EH}
+\begin{proof}
+    See Appendix~\ref{sec:proof-eh}.
+\end{proof}
+\noindent 
+Let \(X\) denote the matrix of eigenvectors of \(\Lambda(\beta_0)\),
+ Define the rotated first-stage and reduced-form estimators and estimands as follows.\footnote{\textcolor{red}{Note: Change from W, X to something else. }}
+\begin{align}
+    \hat W \equiv \hat X'\hat\Sigma^{-1/2}\sqrt{n}\,\hat\tau
+    \qquad\text{and}\qquad
+    w \equiv X'\Sigma^{-1/2}\sqrt{n}\,\tau_n    
+\end{align}
+The vector of statistics \(\hat W\) has the following limiting distribution under the null.
+\begin{align}
+\hat W - w\convd \mathfrak{N}(\mathbf{0}_{2d_Z},\boldsymbol{\iota}_{2d_Z})
+\end{align}
+and we can write the TSLS hyptohesis as \(\kappa_+\lVert w_+ \rVert^2 = \kappa_-\lVert w_- \rVert^2\), where \(w_\pm\) denotes the subvector of \(w\) associated with positive and negative eigenvalues, respectively.
+
+\paragraph*{Sample statistics.}
+To quantify the identifying power of the instrument set, it will be useful to leverage a summary statistic whose limiting distribution is invariant under \(\beta_0\). We record the statistic and its limiting distribution as a lemma.
+\input{2-sections/statements/04-STAT}
+\begin{proof}
+    See Appendix~\ref{sec:proof-stat}.
+\end{proof}
+\begin{remark}
+Observe that by  \(X\) and \(\hat X\) orthogonal, we have \(\hat S \equiv \lVert \hat W\rVert^2/d_Z\) and \(\xi \equiv \lVert w \rVert^2\).
+Observe further that \(\mu^2\), \(\nu^2\) and \(\eta^2\) are constant along the weak instrument limiting sequence, and can be associated with three statistics, 
+\begin{align*}
+    \hat F &\equiv d^{-1}_Z\lVert \hat (\Sigma_{\hat \gamma}/n)^{-\frac{1}{2}}\hat \gamma\rVert^2  & d_Z\hat F &\convd \mathfrak{C}^2_{d_Z}(\mu^2)\\ 
+    \hat J &\equiv 
+        d^{-1}_Z\lVert(\hat \Sigma_{\hat\delta \mid \hat\gamma}/n)^{-\frac{1}{2}}(\hat B \hat \gamma-\hat \delta)\rVert^2
+        & d_Z\hat J &\convd \mathfrak{C}^2_{d_Z-1}(\nu^2)
+        \\
+        \hat H &\equiv 
+        d^{-1}_Z\lVert(\hat \Sigma_{\hat\delta \mid \hat\gamma}/n)^{-\frac{1}{2}}(\hat \Sigma_{\hat \delta,\hat \gamma}\hat \Sigma_{\hat \gamma}^{-1} \hat \gamma-\hat B\hat \gamma)\rVert^2 
+        & d_Z\hat H &\convd \mathfrak{C}^2_{1}(\eta^2)
+\end{align*}
+where \(\hat F\) is the first stage F-statistic, often used as a diagonstic for instrument strength.
+\end{remark}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+

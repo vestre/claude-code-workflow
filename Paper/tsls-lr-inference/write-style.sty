@@ -1,0 +1,371 @@
+%% Encoding
+\RequirePackage[utf8]{inputenx}     % Source code
+\RequirePackage[T1]{fontenc}        % PDF
+
+%% Fonts and typography
+\RequirePackage{longtable}           % Latin Modern Roman
+\RequirePackage{lmodern}           % Latin Modern Roman
+\RequirePackage[scaled]{beramono}  % Bera Mono (Bitstream Vera Sans Mono)
+% \renewcommand{\sfdefault}{phv} % Helvetica
+% \renewcommand{\ttdefault}{cmvtt} % Helvetica
+\RequirePackage[final]{microtype}  % Improved typography
+\pretitle{\begin{center}\Huge}                    % Title evt også: \sffamily\bfseries
+% \renewcommand{\abstractnamefont}{}                 % Abstract
+\renewcommand*{\chaptitlefont}{\Large\raggedright} % Chapter
+% \setsecheadstyle{\large\raggedright}               % Section
+
+%% Mathematics
+\RequirePackage{amsmath}   % Extra symbols
+\RequirePackage{amssymb}   % Extra symbols
+\RequirePackage{amsthm}    % Theorem-like environments
+\RequirePackage{thmtools}  % Theorem-like environments
+\RequirePackage{thm-restate}
+\RequirePackage{mathtools} % Fonts and environments for mathematical formuale
+\RequirePackage{mathrsfs}  % Script font with \mathscr{}
+\RequirePackage{bbm}
+
+  \usepackage{booktabs, tabularx, array, rotating,multirow}
+%% Miscellanous
+\RequirePackage{graphicx}  % Tool for images
+\RequirePackage{csquotes}  % Quotes
+\RequirePackage{textcomp}  % Extra symbols
+\RequirePackage{listings}  % Typesetting code
+\lstset{basicstyle = \ttfamily, frame = tb}
+
+
+% \renewcommand{\refname}{REFERENCES}
+
+% Put dots after numbers in section headers.
+\renewcommand{\@seccntformat}[1]{{\csname the#1\endcsname}.\hspace{1em}}
+
+% Section and table numbers 
+% \def\thesection       {\Roman{section}}
+% \def\thesubsection    {\Alph{subsection}}
+% \def\thetable         {\Roman{table}}
+
+% Section header format
+\renewcommand{\section}{\@startsection
+  {section}{1}{0mm}{-3.5ex \@plus -1ex \@minus -.2ex}{2.3ex \@plus.2ex}{\centering\normalfont\scshape}}
+
+\renewcommand{\subsection}{\@startsection
+  {subsection}{2}{0mm}{-3.25ex \@plus -1ex \@minus -.2ex}{1.5ex \@plus.2ex}{\centering\normalfont\itshape}}
+
+\renewcommand{\subsubsection}{\@startsection
+  {subsubsection}{2}{0mm}{-3.25ex \@plus -1ex \@minus -.2ex}{1.5ex \@plus.2ex}{\normalfont\itshape}}
+
+% \titleformat{\section}{\singlespace\centering\normalfont\Large\bfseries}{\thesection .}{1em}{}
+% \titleformat{\subsection}{\singlespace\normalfont\large\itshape}{\thesubsection .}{1em}{}
+% \titleformat{\subsubsection}{\singlespace\centering\normalfont\itshape}{\thesubsubsection .}{0.5em}{}
+
+% Put section number back in references to subsections and subsubsections.
+% \renewcommand{\p@subsection}{\thesection .}
+% \renewcommand{\p@subsubsection}{\thesection .}
+
+% Appendix formatting:
+
+% \def\appendix{\par
+%   \setcounter{section}{0}%         % Start counting sections again
+%   \setcounter{subsection}{0}% 
+% % Use uppercase letters for section numbers:
+%   \gdef\thesection{\@Alph\c@section}% 
+% % Number equations (A1), etc.:
+%   \renewcommand{\theequation}{\thesection\arabic{equation}}% 
+% % Put word "Appendix" before appendix number:
+%   \renewcommand{\@seccntformat}[1]{{Appendix \csname the##1\endcsname}.\hspace{1em}}
+% % Same formatting as above, but reset equation counter with each section
+%   \renewcommand{\section}{\setcounter{equation}{0}\@startsection
+%     {section}{1}{0mm}{-3.5ex \@plus -1ex \@minus -.2ex}{2.3ex \@plus.2ex}{\centering\normalfont\Large\bfseries}}
+% }
+
+
+%% Bibliography
+\RequirePackage{mathscinet}
+% \RequirePackage[backend = biber, 
+% 				style = apa, 
+% 				citestyle=apa,
+% 				eprint=false,
+% 				doi=false,
+% 				url=false,
+% 				isbn=false,
+% 				related=false,
+% 				natbib]{biblatex} % Or citestyle authoryear
+\usepackage[round]{natbib}  % Or another citation style
+% \addbibresource{bibliography-ext.bib}
+
+% \bibliographystyle{authoryear}
+% \bibliography{bibliography.bib}
+%% Cross references
+\RequirePackage{hyperref}
+\RequirePackage{varioref}
+\urlstyle{sf}
+\RequirePackage[nameinlink, noabbrev]{cleveref}
+
+%% Misc
+
+\usepackage{placeins}
+\RequirePackage[dvipsnames,
+                svgnames,
+                cmyk]{xcolor}
+\definecolor{uiolink}{HTML}{0B5A9D}
+\graphicspath{{figures/}}
+\RequirePackage{tikz}   
+\newsubfloat{figure}
+
+% \RequirePackage[obeyFinal,
+%                 color       = LightGray,
+%                 bordercolor = LightGray,
+%                 textsize    = footnotesize,
+%                 figwidth    = 0.99\linewidth]{todonotes} % Marginal notes
+% \presetkeys{todonotes}{inline}{}
+
+\hypersetup{
+  colorlinks=true,
+  allcolors=uiolink
+}
+
+\usetikzlibrary{patterns, backgrounds, calc}
+
+% Define colors
+\definecolor{innercolor}{RGB}{232, 244, 234}   % Light green
+\definecolor{flatcolor}{RGB}{255, 243, 224}    % Light orange
+\definecolor{desccolor}{RGB}{255, 235, 238}    % Light red
+\definecolor{outercolor}{RGB}{245, 245, 245}   % Light gray
+\definecolor{psicolor}{RGB}{46, 125, 50}       % Dark green
+\definecolor{rhocolor}{RGB}{21, 101, 192}      % Dark blue
+
+
+% \RequirePackage{mathbbm}
+
+\RequirePackage{enumitem}
+\RequirePackage{textcomp}
+\definecolor{listinggray}{gray}{0.9}
+
+%% Delimiters
+\DeclarePairedDelimiter{\p}{\lparen}{\rparen}   % Parenthesis
+\DeclarePairedDelimiter{\set}{\lbrace}{\rbrace} % Set
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}   % Absolute value
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}  % Norm
+\DeclarePairedDelimiter{\Prfences}{[}{]}
+
+%% Operators
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\E}{E}
+\DeclareMathOperator{\tr}{\operatorname{tr}}
+\DeclareMathOperator{\Var}{Var}
+% \DeclareMathOperator{\cov}{Cov}
+% \DeclareMathOperator{\corr}{Corr}
+\DeclareMathOperator{\LATE}{LATE}
+\DeclareMathOperator{\ATE}{ATE}
+\DeclareMathOperator{\ATU}{ATU}
+\DeclareMathOperator{\ATT}{ATT}
+\DeclareMathOperator{\MTE}{MTE}
+\DeclareMathOperator{\MTR}{MTR}
+\DeclareMathOperator{\PRTE}{PRTE}
+\DeclareMathOperator{\DID}{DID}
+
+\newcommand{\B}{\mathbb{B}}
+\newcommand{\cov}{\mathbb{C}}
+\newcommand{\cor}{\mathbb{COR}}
+%% New commands for spaces   
+
+\newcommand{\N}{\mathbb{N}}   % Natural numbers
+\newcommand{\Z}{\mathbb{Z}}   % Integers
+\newcommand{\Q}{\mathbb{Q}}   % Rational numbers
+\newcommand{\R}{\mathbb{R}}   % Real numbers
+\newcommand{\C}{\mathbb{C}}   % Complex numbers
+\renewcommand{\P}{\mathbb{P}} % Projective space
+
+\newcommand{\del}{\partial} 
+
+
+\newcommand{\F}{\mathcal{F}} 
+\newcommand{\G}{\mathcal{G}} 
+\newcommand{\D}{\mathcal{D}} 
+\newcommand{\I}{\mathcal{I}} 
+\renewcommand{\H}{\mathcal{H}} 
+\newcommand{\A}{\mathcal{A}}   % Algebra
+% \newcommand{\B}{\mathcal{B}}   % Algebra
+\newcommand{\K}{\mathcal{K}}   % Algebra
+
+%% New commands for vectors
+\newcommand{\0}{\mathbf{0}}
+\captionnamefont{\bfseries}
+
+%% Miscellanous
+\renewcommand{\qedsymbol}{\(\blacksquare\)}
+\RequirePackage{cancel}
+
+
+\usepackage{geometry}
+\geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+\counterwithout{section}{chapter}
+\usepackage{caption}
+\usepackage{float}
+\captionsetup{margin={0cm,1cm},labelfont=bf}
+\setcounter{secnumdepth}{5}
+\usepackage[english]{babel}
+%% New commands for operators and complements  
+\newcommand{\1}{\mathbbm{1}}    % Indicator  
+\renewcommand{\E}{\mathbb{E}}   % Expectations
+\newcommand{\PV}{\mathbb{PV}}   % Expectations
+\renewcommand{\L}{\mathbb{L}}   % Expectations
+\DeclareMathOperator{\var}{Var}
+\renewcommand{\c}{\mathsf{c}}   % Complements
+\def\qed{\rule{2mm}{2mm}}
+\def\indep{\perp \!\!\! \perp}
+\AtEndEnvironment{remark}{\hfill~\qed}
+\AtEndEnvironment{proof}{\hfill}
+
+\newtheorem{assumption}{Assumption}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{conjectures}{Conjectures}
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{observation}{Observation}
+\newtheorem{parable}{Parable}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}[proposition]
+\newtheorem{corollarylem}{Corollary}[lemma]
+% \newtheorem*{remark}{Remark}
+\newtheorem{remark}{Remark}
+\newtheorem{example}{Example}
+\newtheorem{definition}{Definition}
+\newenvironment{justification}{\renewcommand{\proofname}{Justification}\begin{proof}}{\end{proof}}
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% % \fancyhead[R]{\emph{Arnstein Vestre}}
+% \fancyhead[R]{}
+% \fancyhead[L]{}
+% \fancyhead[C]{BIAS IN IV WITH WEAK INSTRUMENTS}
+% % \fancyfoot[R]{\emph{Bias In IV With Weak Instruments}}
+% % \fancyfoot[L]{\emph{A. Vestre}}
+% \fancyfoot[R]{}
+% \fancyfoot[L]{}
+
+\newtheorem{assumptionalt}{Assumption}
+% New environment
+\newenvironment{assumptionp}[1]{
+  \renewcommand\theassumptionalt{#1}      
+  \assumptionalt
+}{\endassumptionalt}
+
+\newtheorem{assumptionsalt}{Assumptions}
+% New environment
+\newenvironment{assumptionsp}[1]{
+  \renewcommand\theassumptionsalt{#1}      
+  \assumptionsalt
+}{\endassumptionsalt}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+% \linespread{1.5}
+
+\newtheorem{propositionalt}{Proposition}
+% New environment
+\newenvironment{propositionp}[1]{
+  \renewcommand\thepropositionalt{#1}      
+  \propositionalt
+}{\endpropositionalt}
+
+\newtheorem{lemmaalt}{Lemma}
+% New environment
+\newenvironment{lemmap}[1]{
+  \renewcommand\thelemmaalt{#1}      
+  \lemmaalt
+}{\endlemmaalt}
+
+\newtheorem{propertiesalt}{Properties}
+% New environment
+\newenvironment{propertiesp}[1]{
+  \renewcommand\thepropertiesalt{#1}      
+  \propertiesalt
+}{\endpropertiesalt}
+
+\newtheorem{definitionalt}{Definition}
+% New environment
+\newenvironment{definitionp}[1]{
+  \renewcommand\thedefinitionalt{#1}      
+  \definitionalt
+}{\enddefinitionalt}
+
+
+\newtheorem{corollaryalt}{Corollary}
+% New environment
+\newenvironment{corollaryp}[1]{
+  \renewcommand\thecorollaryalt{#1}      
+  \corollaryalt
+}{\endcorollaryalt}
+
+
+\newtheorem{observationalt}{Observation}
+% New environment
+\newenvironment{observationp}[1]{
+  \renewcommand\theobservationalt{#1}      
+  \observationalt
+}{\endobservationalt}
+
+\newcommand{\mytodo}[1]{\vspace{4pt}\noindent\textcolor{red}{TODO: #1}\vspace{4pt}}
+\renewcommand{\N}{\mathcal{N}}
+\renewcommand{\var}{\mathbb{V}}
+\renewcommand{\E}{\mathbb{E}}
+\renewcommand{\L}{\mathbb{L}}
+
+\newcommand{\diag}{\text{diag}}
+\renewcommand{\I}{\mathbb{I}}
+\newcommand{\m}{\mathbbm{m}}
+\newcommand{\M}{\mathbb{M}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\conv}{\xrightarrow{\;\;\;}}
+\newcommand{\forallsp}{\,\,\forall\,\,}
+\newcommand{\existssp}{\,\,\exists\,\,}
+\newcommand{\convd}{\xrightarrow{{\scriptscriptstyle \mathrm{\;d\;}}}}
+\newcommand{\dconv}{\xleftarrow{{\scriptscriptstyle \mathrm{\;d\;}}}}
+\newcommand{\convp}{\xrightarrow{{\scriptscriptstyle \mathrm{\;P\;}}}}
+\newcommand{\convn}{\xrightarrow{{\scriptscriptstyle \mathrm{\;n\to\infty\;}}}}
+\newcommand{\convas}{\xrightarrow{{\scriptscriptstyle \mathrm{a.s.}}}}
+\newcommand{\convms}{\xrightarrow{{\scriptscriptstyle \mathrm{m.s.}}}}
+\newcommand{\iv}{\mathrm{iv}}
+% \usepackage[caption=false]{subfig}
+
+\newsubfloat{table}
+% \newsubfloat{figure}
+\renewcommand{\baselinestretch}{1.45}
+% \bibliography{bibliography.bib}
+% \addbibresource{bibliography.bib}
+
+
+% \usepackage{ntheorem}
+\usepackage{chngcntr}
+\usepackage{apptools}
+% \AtAppendix{\counterwithin{lemma}{section}}
+% \AtAppendix{\counterwithin{definition}{section}}
+% \AtAppendix{\renewtheorem{definition}{Definition}[section]}
+% \AtAppendix{\renewtheorem{lemma}{Lemma}[section]}
+
+\setlength{\cftsectionindent}{0pt}% Remove indent for \section
+\setlength{\cftsubsectionindent}{0.5cm}% Remove indent for \subsection
+\setlength{\cftsubsubsectionindent}{1cm}% Remove indent for \subsection
+\setlength{\cftparagraphindent}{1.5cm}% Remove indent for \subsection
+
+\makeatletter
+\newcommand{\setdeftag}[1]{% \settheoremtag{<tag>}
+  \let\oldthedefinition\thedefinition% Store \thetheorem
+  \renewcommand{\thedefinition}{#1}% Redefine it to a fixed value
+  \g@addto@macro\enddefinition{% At \end{theorem}, ...
+    \addtocounter{definition}{-1}% ...restore theorem counter value and...
+    \global\let\thedefinition\oldthedefinition}% ...restore \thetheorem
+  }
+\makeatother
+
+\makeatletter
+\newcommand{\setproptag}[1]{% \settheoremtag{<tag>}
+  \let\oldtheproposition\theproposition% Store \thetheorem
+  \renewcommand{\theproposition}{#1}% Redefine it to a fixed value
+  \g@addto@macro\endproposition{% At \end{theorem}, ...
+    \addtocounter{proposition}{-1}% ...restore theorem counter value and...
+    \global\let\theproposition\oldtheproposition}% ...restore \thetheorem
+  }
+\makeatother
+

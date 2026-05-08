@@ -1,0 +1,159 @@
+\section{Valid Inference on the TSLS Estimand with Weak Instruments}
+\label{sec:results}
+
+We now turn to deriving a test that is valid under  weak instruments with treatment effect heterogeneity.
+
+\paragraph*{The TLR Statistic}
+
+The AR, LM and CLR tests are derived under the constant-effects hypothesis. We have derived a framework for imposing hypotheses on the TSLS estimand in terms of the asymptotic likelihood of \(\hat \tau\). The resulting likelihood ratio statistic is a quadratic program with a quadratic constraint. In particular, it is a special case of the generalized trust region subproblem, and has a unique solution, as shown e.g. by \cite{sternIndefiniteTrustRegion1995}. We record the result as a proposition.
+
+
+
+\input{2-sections/statements/08-TLR}
+\begin{proof}
+    See Appendix~\ref{sec:proof-tlr}.
+\end{proof}
+
+
+
+
+\paragraph*{Limiting Distribution of TLR.}
+
+Under maintained assumptions, the TLR statistic has a limiting distirbution with two nuisance parameters. We record the result.
+
+
+
+
+\input{2-sections/statements/09-TLR-LIM}
+\begin{proof}
+    See Appendix~\ref{sec:proof-tlr-lim}.
+\end{proof}
+\noindent 
+It is useful to observe that the weak-instrument limiting distribution  obtains the strong-instrument limiting distribution as \(\xi\to \infty\). We record this, and some other useful boundary results as a proposition.
+\input{2-sections/statements/10-BC}
+\begin{proof}
+    See Appendix~\ref{sec:proof-bc}.
+\end{proof}
+\noindent
+
+
+\noindent 
+We now turn to using the above results to
+construct a uniformly valid test for the hypothesis \(\beta=\beta_0\).
+
+
+\paragraph*{Conservative TLR Inference.}
+
+The limiting distribution of the TLR statistic depends on two nuisance parameters: \(\varrho\) and \(\xi\). We have a consistent estimator for \(\varrho\), namely \(\hat \varrho\equiv \sum_{k=1}^{d_Z}\hat \kappa^{(k)}_{+}/(\hat\kappa^{(k)}_{+}+\lvert \hat\kappa^{(k)}_{-}\rvert)\). We can use this estimator to compute worst-case quantiles. This gives a conservative test. We record the result as a proposition.
+
+\input{2-sections/statements/11-TLR-LFC}
+\begin{proof}
+    See Appendix~\ref{sec:proof-tlr-lfc}.
+\end{proof}
+\noindent 
+As we show in \Cref{lem:stat}, \(\hat S\) is a sufficient statistic for \(\xi\). It follows that we can use \(\hat S\) to perform inference and construct confidence intervals for the second nuisance parameter. This paves the way for a test in the spirit of \cite{bergerValuesMaximizedConfidence1994} that retains power as the instrument grows stronger.
+We record the result.
+
+
+\input{2-sections/statements/12-TLR-BB}
+\begin{proof}
+    See Appendix~\ref{sec:proof-tlr-bb}.
+\end{proof}
+\noindent
+The Berger-Boos Two-step test trades off a small price, \(\alpha_2\), in order to guard against \(\xi=0\) when \(\hat S\) is moderate and large. While the procedure turns out to perform well even with choices  \(\alpha_2 \approx 0\), it also means that the TLR test statistic will never obtain the strong-instrument limit, and always be less powerful than the TSLS Wald statistic in the face of weak instrument. In the following, we leverage results from \cite{elliottNearlyOptimalTests2015} in order to construct a near power optimal test.
+
+\paragraph*{The TLR Test.}
+Observe that the limiting distribution of the TLR statistic can be written on a conditional form. We record the result as a lemma.
+\input{2-sections/statements/13-COND}
+
+\clearpage
+
+
+
+
+
+
+
+In \Cref{fig:lr-regular-asy-all} we plot the size of the strong-instrument TLR test, the LFC TLR test and the Berger-Boos TLR test under worst-case endogeneity. We see that the strong-instrument test is invalid with weak instruments. We further see that the LFC TLR test is very conservative. The Berger-Boos corrected TLR test is valid and close to exact.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{figs/inference_size_lr_dz5_rho0.999.pdf}
+    \caption{\textbf{Size of the Berger-Boos corrected LR Test.} This figure plots the size of the Berger-Boos corrected LR test  for the hypothesis \(\beta=\beta_0\) when \(\beta\) is homogeneous, and when it is the TSLS/JIVE estimand (heterogeneous treatment effects), with weak instruments. The orange line shows the corrected LR test, the purple line shows the uncorrected LR test, and the brown line  shows the LFC-LR test. The y axis shows the rejection rate (size), and the x axis enumerates instrument strength.}
+    \label{fig:lr-regular-asy-all}
+\end{figure}
+
+
+In \Cref{fig:lr-regular-asy-all-power} we plot the power of the Berger-Boos TLR test under worst-case endogeneity. We compare it to the power of the TSLS and Jaccknife IV Wald test, to obtain a notion of the degree to which the power of our test is on the level, and it is.
+
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{figs/inference_power_trio_dz3_rho0.999.pdf}
+    \caption{\textbf{Power of the Berger-Boos corrected LR Test.} This figure plots the power against alternative of the Berger-Boos corrected LR test  for the hypothesis \(\beta=\beta_0\). The orange line shows the corrected LR test, the red line  shows the TSLS Wald test and the gray line the JIVE Wald test. The y axis shows the rejection rate, and the x axis enumerates distance from the true parameter.}
+    \label{fig:lr-regular-asy-all-power}
+\end{figure}
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

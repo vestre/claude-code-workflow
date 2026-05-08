@@ -1,0 +1,23 @@
+\begin{definitionp}{LEG}[Legacy Robust Test Statistics]\label{def:leg}
+Let \(\hat\Omega(\beta_0) \equiv \hat\Sigma_{\hat\delta} - 2\beta_0\,\hat\Sigma_{\hat\delta,\hat\gamma} + \beta_0^2\,\hat\Sigma_{\hat\gamma}\) denote the variance of the restriction \(\hat \delta - \beta_0 \hat \gamma\), and let
+\[\tilde\gamma(\beta_0) \equiv \hat\gamma - \hat\Omega(\beta_0) ^{-1}\bigl(\hat\Sigma_{\hat\delta,\hat\gamma} - \beta_0\,\hat\Sigma_{\hat\gamma}\bigr)\,(\hat\delta - \beta_0\hat\gamma)\] denote the first stage orthogonalized relative to \(\hat \delta - \beta_0 \hat \gamma\).
+    \begin{enumerate}
+        \item
+        The AR test statistic is defined as
+        \begin{align}
+        \mathrm{AR}(\beta_0) &\equiv \bigl\lVert (\hat\Omega(\beta_0)/n)^{-1/2}(\hat\delta - \beta_0\hat\gamma)\bigr\rVert^2
+        \end{align}
+        \item
+        The LM test statistic is defined as
+        \begin{align}
+        \mathrm{LM}(\beta_0) \;\equiv\; {\left[\tilde\gamma(\beta_0)'(\hat\Sigma(\beta_0)/n)^{-1}(\hat\delta - \beta_0\hat\gamma)\right]^2}\bigg/{\bigl\lVert(\hat\Sigma(\beta_0)/n)^{-1/2}\tilde\gamma(\beta_0)\bigr\rVert^2}.
+        \end{align}
+        \item
+        The CLR test statistic is defined as
+        \begin{align}
+        \mathrm{CLR}(\beta_0) = \frac{1}{2}\left[AR(\beta_0) + \sqrt{(AR(\beta_0)-\hat r(\beta_0))^2 + 4 \cdot LM(\beta_0) \cdot \hat r(\beta_0)} \right]
+    \end{align}
+    \end{enumerate}
+    \noindent
+     where \(\hat r(\beta_0) \equiv \bigl\lVert(\hat\Sigma(\beta_0)/n)^{-1/2}\tilde\gamma(\beta_0)\bigr\rVert^2\). The Sargan-Hansen J-statistic is defined as \(\hat J(\beta_0)\equiv AR(\beta_0)- LM(\beta_0)\).
+\end{definitionp}

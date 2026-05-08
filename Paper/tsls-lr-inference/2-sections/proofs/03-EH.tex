@@ -1,0 +1,34 @@
+\begin{proof}
+    TBD. See proof from C. Notes for signature part:
+
+    The matrix \(\Gamma(\beta_0)\) has signature \((d_Z,d_Z)\), i.e. \(d_Z\) positive and \(d_Z\) negative eigenvalues.
+% \footnote{In particular, \(\Gamma(\beta_0)\) has \(d_Z\) identical pairs of eigenvalues taking the values \(-\beta_0 + \sqrt{\beta_0^2-1}\).}
+% \footnote{\textcolor{red}{Need reference or proof for this, or maybe factorization helps.}}
+\(\Lambda(\beta_0)\) is congruent to \(\Gamma(\beta_0)\), hence has the same signature. Use exact expression for eigenvalues of Gamma beta0.\footnote{Observe that since   \(\Sigma\) is defined by
+% \begin{align*}
+    \(\Sigma_{\hat\delta} \equiv \Sigma_{ZZ}^{-1}\, \E[\tilde Z_i\tilde Z_i' W_i^2]\, \Sigma_{ZZ}^{-1},
+\Sigma_{\hat\gamma} \equiv \Sigma_{ZZ}^{-1}\, \E[\tilde Z_i\tilde Z_i' V_i^2]\, \Sigma_{ZZ}^{-1}\), and
+\(\Sigma_{\hat\delta,\hat\gamma} \equiv \Sigma_{ZZ}^{-1}\, \E[\tilde Z_i\tilde Z_i' W_i V_i]\, \Sigma_{ZZ}^{-1}\),
+% \end{align*}
+we can write \(\Lambda(\beta_0)\) as
+\begin{align*}
+    \Lambda(\beta_0) =
+    \E\left[\begin{bmatrix}
+        W_i^2   & W_iV_i \\
+        W_iV_i  & V_i^2
+    \end{bmatrix} \otimes \tilde Z_i\tilde Z_i' \right]^{\frac{1}{2}}
+    \left[\begin{bmatrix}
+        0 & 1 \\
+        1 & -2\beta_0
+    \end{bmatrix} \otimes \boldsymbol{\iota}_{d_Z}\right]
+    \E\left[\begin{bmatrix}
+        W_i^2   & W_iV_i \\
+        W_iV_i  & V_i^2
+    \end{bmatrix} \otimes \tilde Z_i\tilde Z_i' \right]^{\frac{1}{2}}
+\end{align*}
+where \(\tilde Z_i \equiv \Sigma_{ZZ}^{-\frac{1}{2}}Z_i\) is the whitened instrument. The signature follows since \(\left[\begin{smallmatrix}
+        0 & 1 \\
+        1 & -2\beta_0
+    \end{smallmatrix}\right]\) has \(d_Z\) identical pairs of eigenvalues taking the values \(-\beta_0 + \sqrt{\beta_0^2-1}\) and \(\Gamma(\beta_0)\) and \(\Lambda(\beta_0)\) are congruent to this matrix.
+}
+\end{proof}

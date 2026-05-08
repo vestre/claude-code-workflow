@@ -2,20 +2,23 @@
 paths:
   - "Slides/**/*.tex"
   - "Quarto/**/*.qmd"
+  - "Paper/**/*.tex"
   - "quality_reports/**"
 ---
 
 # Proofreading Agent Protocol (MANDATORY)
 
-**Every lecture file MUST be reviewed before any commit or PR.**
+**Every lecture or manuscript file MUST be reviewed before any commit or PR.**
 
 **CRITICAL RULE: The agent must NEVER apply changes directly. It proposes all changes for review first.**
+
+**For files under `Paper/**`:** the agent reads the comment-stripped view via `scripts/strip-tex-comments.sh`. Commented-out alternative text is not subject to grammar/typo checks. See `manuscript-comment-policy.md`.
 
 ## What the Agent Checks
 
 1. **Grammar** -- subject-verb agreement, missing articles, wrong prepositions
 2. **Typos** -- misspellings, search-and-replace corruption, duplicated words
-3. **Overflow** -- overfull hbox (Beamer), content exceeding slide boundaries (Quarto)
+3. **Overflow** -- overfull hbox (Beamer), content exceeding slide boundaries (Quarto). Manuscripts skip this check (no slide-size constraint).
 4. **Consistency** -- notation, citation style (`\citet` vs `\citep`, `[@key]`), terminology
 5. **Academic quality** -- informal abbreviations, missing words, awkward phrasing
 

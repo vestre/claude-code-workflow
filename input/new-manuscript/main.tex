@@ -1,0 +1,141 @@
+\documentclass[a4paper, article, english, oneside, unknownkeysallowed, 12pt]{memoir} 
+\usepackage{write-style}
+
+\usepackage{bibunits}
+\defaultbibliographystyle{apalike} 
+\defaultbibliography{bibliography} 
+
+% \title{Bias in TSLS and JIVE with  \\
+% % Binary Treatment and \\ 
+% Some  Weak Instruments\thanks{TBC.}}
+
+% \title{Bias in IV with Binary Treatment  \\
+% % Binary Treatment and \\ 
+% and Some  Weak Instruments\thanks{TBC.}}
+\title{
+Weak-instrument Robust Inference with Heterogeneous Treatment Effects\thanks{Email: \href{mailto:arnsteinvestre@gmail.com}{arnsteinvestre@gmail.com}.}}
+
+
+% Author
+\author{
+Arnstein Vestre \\[-4pt] 
+{\small University of Chicago} \\
+}
+\date{May, 2026 \\[8pt] {\small\textbf{NOT FOR CIRCULATION}} \vspace{-22pt}
+% \\[1em] 
+% {\normalsize\textcolor{red}{\textbf{PRELIMINARY -- DO NOT CIRCULATE}}}
+} %\vspace{-3em}
+\renewcommand{\bibname}{References}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                INTRODUCTION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\maketitle
+
+
+% % -- Start first bibliography unit -- % %
+\begin{bibunit}
+
+\begin{abstract}
+\noindent
+TBC -- Rewrite.
+
+
+\end{abstract}
+
+% \clearpage
+
+
+% % --- Introduction --- %
+\clearpage
+\input{2-sections/1-introduction}
+
+\clearpage
+% --- Problem -- %
+\input{2-sections/2-set-up-notation}
+
+\clearpage
+% --- Problem -- %
+\input{2-sections/3-review-existing-methods}
+
+\clearpage
+% --- Problem -- %
+\input{2-sections/4-results}
+
+\clearpage
+% % --- Test --- %
+\input{2-sections/5-extensions}
+
+% \clearpage
+% % % --- Alternative Estimator --- %
+% \input{2-sections/6-empirical-relevance}
+
+\clearpage
+% % --- Conclusion -- %
+\input{2-sections/7-conclusion}
+
+\clearpage
+
+% Bibliography for first part
+\putbib
+
+\end{bibunit}
+
+% --- Appendix --- %
+\clearpage
+
+% Begin Appendix Bibliography Unit
+\begin{bibunit}
+
+
+\appendix 
+\renewcommand\thesection{\Alph{section}}
+\renewcommand\thesubsubsection{\Alph{section}.\arabic{subsection}.\roman{subsubsection}}
+
+
+% Set up appendix 
+\renewcommand\thesection{\Alph{section}}
+\input{2-sections/A-appendix-1}
+
+
+\clearpage
+
+\putbib
+
+\end{bibunit}
+
+% \begin{bibunit}
+
+% \clearpage
+
+% \appendix 
+% \setcounter{section}{1}
+%   \setcounter{table}{0}
+%   \setcounter{figure}{0}  
+%   \renewcommand{\thetable}{A.\arabic{table}}
+%   \renewcommand\thefigure{A.\arabic{figure}} 
+% \renewcommand\thesection{\Alph{section}}
+% \renewcommand\thesubsection{\Alph{section}.\arabic{subsection}}
+% \renewcommand\thesubsubsection{\Alph{section}.\arabic{subsection}.\roman{subsubsection}}
+% \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+% \counterwithin{definition}{section}
+% \counterwithin{lemma}{section}
+% \clearpage
+
+% % Internet Appendix
+% \input{2-sections/B-appendix-2}
+
+% \clearpage
+% \input{2-sections/C-appendix-3}
+
+% \clearpage
+
+% % Bibliography for internet appendix
+% \putbib
+
+% \end{bibunit}
+
+\end{document}

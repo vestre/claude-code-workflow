@@ -1,0 +1,74 @@
+% \section{Pretest for Heteroskedasticity}
+
+% \clearpage
+
+% \section{Optimality}
+% \label{sec:optimality}
+
+% \begin{enumerate}
+%     \item 
+%     % Derive genralized case here
+%     Optimality analysis here
+% \end{enumerate}
+
+% \clearpage
+
+\section{Extensions}
+
+\label{sec:extensions}
+
+
+\paragraph*{General Limiting Distribution with Weak Instruments and Weak Exogeneity.}
+
+Assume now we instead imposed a weaker assumption that \Cref{ass:exog}. In particular, consider the following assumption.
+\begin{assumptionp}{IVW}[Weak Exogeneity]\label{ass:weak-exog}
+    \(\E[Z_iU_i]=0_{d_Z}\).
+\end{assumptionp}
+
+% In the following, we derive the limiting distribution of the TLR statistic without imposing strong exogeneity, only weak exogeneity. We record the assumption as follows.
+
+% Observe that along the \cite{staigerInstrumentalVariablesRegression1997} limiting distribution, we have,
+% \begin{align*}
+%     \text{tau n}
+% \end{align*}
+% It further follows that the LR statistic has limiting distribution
+\noindent
+Under the weaker assumption, \Cref{lem:bnh} does not obtain. It thus follows that we obtain a less tractable version of \Cref{prop:wi}.
+
+% We now obtain the following result.
+
+\begin{propositionp}{WI}[Weak-instrument Limiting Distribution]
+\label{prop:wi}
+    Under \Cref{ass:weak-exog}, the limiting distribution of the TLR statistic with weak instruments is given by.
+    \begin{align}
+    LR(\beta_0) \convd \sum_{j=1}^{2d_Z}  W_j^2\left(\frac{\lambda^*  \kappa_j}{1+\lambda^* \kappa_j}\right)^2 \qquad \text{s.t.} \qquad \sum_{j=1}^{2d_Z}\kappa_j w_j^2 = 0
+\end{align}
+where \(W\sim \mathfrak{N}(w,\boldsymbol{\iota}_{2d_Z})\) and \(W_j\) are the components of this vector.
+\end{propositionp}
+\begin{proof}
+    See Appendix X.
+\end{proof}
+% \begin{align}
+%     LR(\beta_0) \convd \sum_{j=1}^{2d_Z}  W_j^2\left(\frac{\lambda^*  \kappa_j}{1+\lambda^* \kappa_j}\right)^2
+% \end{align}
+\noindent
+Without any further structure, this problem has \(4d_Z-1\) nuisance parameters. We have consistent estimators for all \(\kappa_j\). However, for \(w\) we only have the \(2d_Z\)-dimensional statistic \(\hat W\). It is possible to perform a version of the TLR-BB test.
+
+% While we have a consistent estimator for \(\kappa\), we do not for \(w\), and in any case, it is not trivial to search over the whole nuisance space even with a sufficient statistic for \(w\).
+
+% namely imposing \(\E[U_iZ_i]=\mathbf{0}_{d_Z}\)
+
+\paragraph{Notes:}
+\begin{itemize}
+    \item 
+        I mu2, nu2 osv resultat: Skriv in GMM estimator istedenfor TSLS (nei, men husk på det evt til extension). hetskd versjon
+\end{itemize}
+% \paragraph*{MTE Functionals}
+
+% \begin{enumerate}
+%     \item 
+%     MTE Functionals
+%     % \item 
+%     % % Derive genralized case here
+%     % Optimality analysis here
+% \end{enumerate}
